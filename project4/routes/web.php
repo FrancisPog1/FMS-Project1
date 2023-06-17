@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FMSAuthController;
+
 use App\Http\Controllers\AcademicRank_Controller;
 use App\Http\Controllers\Specialization_Controller;
 use App\Http\Controllers\Designation_Controller;
@@ -13,13 +14,14 @@ use App\Http\Controllers\RequirementType_Controller;
 use App\Http\Controllers\ActivityType_Controller;
 use App\Http\Controllers\Activities_Controller;
 use App\Http\Controllers\User_Controller;
-use App\Http\Controllers\Logout_Controller;
-use App\Http\Controllers\Login_Controller;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 use App\Http\Controllers\Dashboard_Controller;
 
 use Carbon\Carbon;
 use App\Http\Middleware\AuthCheck;
+
+use App\Http\Controllers\DropzoneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,14 +35,8 @@ use App\Http\Middleware\AuthCheck;
 */
 
 
-
-/**Login page */
-Route::get('/', [Login_Controller::class, 'login'])->middleware('alreadyLoggedIn');
-Route::post('/login_user', [Login_Controller::class, 'loginUser'])->name('login_user');
-
-
 //------------------------------------------------------------------ ACADEMIC HEAD --------------------------------------------------------------------//
-Route::group(['middleware' => [AuthCheck::class]], function () {
+Route::middleware('auth')->group(function () {
      // Define your protected routes here
      //This protects the page by prohibiting the access of user when they are not logged in
 
@@ -49,19 +45,17 @@ Route::group(['middleware' => [AuthCheck::class]], function () {
         return view('Academic_head/INTG_AcadHead_Dashboard', ['page_title' => 'Dashboard']);
         })->name('acadhead_Dashboard');
 
-    /**Logout */
-        Route::get('/logout', [Logout_Controller::class, 'logout']);
-
     /**Add User */
     Route::get('/AddUser', function () {
         return view('Academic_head/Admin_Setup/AcadHead_AddUser', ['page_title' => 'Add User']);
         })->name('acadhead_AddUser');
 
-            //Retrieving Academic Rank Data in the DB
+            //Retrieving Users Data in the DB
             Route::get('/AddUser', function () {
                 $users = DB::table('users')->get();
                 return view('Academic_head/Admin_Setup/AcadHead_AddUser', compact('users'));
             });
+
 
     /**Academic Rank */
         Route::get('/AcadHead', function () {
@@ -84,7 +78,7 @@ Route::group(['middleware' => [AuthCheck::class]], function () {
                 $roles = DB::table('roles')->get();
                 return view('Academic_head/Admin_Setup/AcadHead_Role', compact('roles'));
             });
-        
+
 
     /**Faculty Type */
         Route::get('/FacultyType', function () {
@@ -96,7 +90,7 @@ Route::group(['middleware' => [AuthCheck::class]], function () {
                         $facultytypes = DB::table('faculty_types')->get();
                         return view('Academic_head/Admin_Setup/AcadHead_FacultyType', compact('facultytypes'));
                     });
-       
+
 
     /**Designation */
         Route::get('/Designation', function () {
@@ -108,7 +102,7 @@ Route::group(['middleware' => [AuthCheck::class]], function () {
                         $designations = DB::table('designations')->get();
                         return view('Academic_head/Admin_Setup/AcadHead_Designation', compact('designations'));
                     });
-       
+
 
     /**Specialization */
         Route::get('/Specialization', function () {
@@ -120,7 +114,7 @@ Route::group(['middleware' => [AuthCheck::class]], function () {
                         $specializations = DB::table('specializations')->get();
                         return view('Academic_head/Admin_Setup/AcadHead_Specialization', compact('specializations'));
                     });
-        
+
 
         /**Program*/
         Route::get('/Program', function () {
@@ -138,7 +132,7 @@ Route::group(['middleware' => [AuthCheck::class]], function () {
         Route::get('/RequirementBin', function () {
             return view('Academic_head/AcadHead_Setup/AcadHead_RequirementBin', ['page_title' => 'Requirement Bin']);
             })->name('acadhead_RequirementBin');
-    
+
                         //Retrieving Program Data in the DB
                         Route::get('/RequirementBin', function () {
                             $requirementbins = DB::table('requirement_bins')->get();
@@ -150,7 +144,7 @@ Route::group(['middleware' => [AuthCheck::class]], function () {
         Route::get('/RequirementType', function () {
             return view('Academic_head/AcadHead_Setup/AcadHead_RequirementType', ['page_title' => 'Class Observation']);
             })->name('acadhead_RequirementType');
-    
+
                         //Retrieving Program Data in the DB
                         Route::get('/RequirementType', function () {
                             $requirementtypes = DB::table('requirement_types')->get();
@@ -161,7 +155,7 @@ Route::group(['middleware' => [AuthCheck::class]], function () {
         Route::get('/ActivityType', function () {
             return view('Academic_head/AcadHead_Setup/AcadHead_ActivityType', ['page_title' => 'Class Observation']);
             })->name('acadhead_ActivityType');
-    
+
                         //Retrieving Program Data in the DB
                         Route::get('/ActivityType', function () {
                             $activitytypes = DB::table('activity_types')->get();
@@ -185,7 +179,7 @@ Route::group(['middleware' => [AuthCheck::class]], function () {
             return view('Academic_head/AcadHead_Setup/AcadHead_Reports', ['page_title' => 'Reports']);
             })->name('acadhead_Reports');
 
-            
+
         /**Academic Head Activities*/
         Route::get('/AcadHead_Activities', function () {
             return view('Academic_head/AcadHead_Setup/AcadHead_Activities', ['page_title' => 'Activities']);
@@ -199,17 +193,17 @@ Route::group(['middleware' => [AuthCheck::class]], function () {
                                 ->join('activity_types', 'activities.activity_type_id', '=', 'activity_types.id')
                                 ->select('activities.title', 'activities.start_datetime', 'activities.status', 'activities.end_datetime', 'activity_types.title as type_title')
                                 ->get();
-                            
+
                             // Convert start_datetime and end_datetime to the desired format
                             foreach ($activities as $activity) {
                                 $activity->start_datetime = Carbon::parse($activity->start_datetime)->format('F d, Y h:i A');
                                 $activity->end_datetime = Carbon::parse($activity->end_datetime)->format('F d, Y h:i A');
                             }
-                            
+
                             return view('Academic_head/AcadHead_Setup/AcadHead_Activities', compact('activities', 'activitytypes'));
-                            
-                            
-    
+
+
+
                         });
 
 
@@ -218,18 +212,18 @@ Route::group(['middleware' => [AuthCheck::class]], function () {
             return view('/User_Profile', ['page_title' => 'User Profile']);
             })->name('user_Profile');
 
-    //This is all the routes for Creating or Adding. 
+    //This is all the routes for Creating or Adding.
     Route::post('/Create_AcademicRank', [AcademicRank_Controller::class, 'Create_AcadRank'])->name('Create_AcademicRank');
     Route::post('/CreateProgram', [Program_Controller::class, 'Create_Program'])->name('CreateProgram');
     Route::post('/CreateSpecialization', [Specialization_Controller::class, 'Create_Specialization'])->name('CreateSpecialization');
     Route::post('/CreateDesignation', [Designation_Controller::class, 'Create_Designation'])->name('CreateDesignation');
     Route::post('/CreateFacultyType', [FacultyType_Controller::class, 'Create_FacultyType'])->name('CreateFacultyType');
     Route::post('/CreateRole', [Role_Controller::class, 'Create_Roles'])->name('CreateRole');
-    Route::post('/register_user', [User_Controller::class, 'registerUser'])->name('register_user'); 
-    Route::post('/Create_RequirementBin', [RequirementBin_Controller::class, 'Create_RequirementBin'])->name('Create_RequirementBin'); 
-    Route::post('/Create_RequirementType', [RequirementType_Controller::class, 'Create_RequirementType'])->name('Create_RequirementType'); 
-    Route::post('/Create_ActivityType', [ActivityType_Controller::class, 'Create_ActivityType'])->name('Create_ActivityType'); 
-    Route::post('/Create_Activities', [Activities_Controller::class, 'Create_Activities'])->name('Create_Activities'); 
+    // Route::post('/register_user', [User_Controller::class, 'registerUser'])->name('register_user');
+    Route::post('/Create_RequirementBin', [RequirementBin_Controller::class, 'Create_RequirementBin'])->name('Create_RequirementBin');
+    Route::post('/Create_RequirementType', [RequirementType_Controller::class, 'Create_RequirementType'])->name('Create_RequirementType');
+    Route::post('/Create_ActivityType', [ActivityType_Controller::class, 'Create_ActivityType'])->name('Create_ActivityType');
+    Route::post('/Create_Activities', [Activities_Controller::class, 'Create_Activities'])->name('Create_Activities');
 
     //Delete routes for deleting records
     Route::delete('/delete_roles/{roleId}', [Role_Controller::class, 'deleteRoles'])->name('delete_roles');
@@ -256,7 +250,17 @@ Route::group(['middleware' => [AuthCheck::class]], function () {
     Route::put('/update_requirementbins{requirementbinId}', [RequirementBin_Controller::class, 'updateRequirementbins'])->name('update_requirementbins');
     Route::put('/update_activitytypes{activitytypeId}', [ActivityType_Controller::class, 'updateActivitytypes'])->name('update_activitytypes');
     Route::put('/update_activities{activitiesId}', [Activities_Controller::class, 'updateActivities'])->name('update_activities');
-                
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // For registering users
+    Route::get('register', [RegisteredUserController::class, 'create'])
+                ->name('register');
+    Route::post('register_user', [RegisteredUserController::class, 'Create_User'])->name('register_user');
+
+
 });
 
 
@@ -269,7 +273,7 @@ Route::get('/FacultyActivities', function () {
 Route::get('/FacultyClassObservation', function () {
     return view('Faculty/Faculty_ClassObservation', ['page_title' => 'Faculty Class Observation']);
     })->name('faculty_ClassObservation');
-    
+
 Route::get('/FacultyClassSchedule', function () {
     return view('Faculty/Faculty_ClassSchedule', ['page_title' => 'Faculty Class Schedule']);
     })->name('faculty_ClassSchedule');
@@ -281,7 +285,7 @@ Route::get('/FacultyDashboard', function () {
 Route::get('/FacultyProfile', function () {
     return view('Faculty/Faculty_Profile', ['page_title' => 'Faculty Profile']);
     })->name('faculty_Profile');
-    
+
 Route::get('/FacultyReports', function () {
     return view('Faculty/Faculty_Reports', ['page_title' => 'Faculty Reports']);
     })->name('faculty_Reports');
@@ -303,11 +307,79 @@ Route::get('/FacultyRequirementBin', function () {
 
 
 //------------------------------------------------------------------ STAFF --------------------------------------------------------------------//
+Route::get('/StaffClassObservation', function () {
+    return view('Staff/Staff_ClassObservation', ['page_title' => 'Staff Class Observation']);
+    })->name('Staff_ClassObservation');
 
+Route::get('/StaffClassSchedule', function () {
+    return view('Staff/Staff_ClassSchedule', ['page_title' => 'Staff Class Schedule']);
+    })->name('Staff_ClassSchedule');
 
+Route::get('/StaffDashboard', function () {
+    return view('Staff/Staff_Dashboard', ['page_title' => 'Staff Dashboard']);
+    })->name('Staff_Dashboard');
+
+// Route::get('/StaffProfile', function () {
+//     return view('Staff/Staff_Profile', ['page_title' => 'Staff Profile']);
+//     })->name('Staff_Profile');
+
+Route::get('/StaffReports', function () {
+    return view('Staff/Staff_Reports', ['page_title' => 'Staff Reports']);
+    })->name('Staff_Reports');
 
 
 
 //------------------------------------------------------------------ DIRECTOR --------------------------------------------------------------------//
+Route::get('/DirectorClassObservation', function () {
+    return view('Director/Director_ClassObservation', ['page_title' => 'Director Class Observation']);
+    })->name('Director_ClassObservation');
 
+Route::get('/DirectorClassSchedule', function () {
+    return view('Director/Director_ClassSchedule', ['page_title' => 'Director Class Schedule']);
+    })->name('Director_ClassSchedule');
+
+    Route::get('/DirectorActivities', function () {
+        return view('Director/Director_Activities', ['page_title' => 'Director Activities']);
+        })->name('Director_Activities');
+
+    Route::get('/DirectorActivityTypes', function () {
+        return view('Director/Director_ActivityTypes', ['page_title' => 'Director Class Schedule']);
+        })->name('Director_ActivityTypes');
+
+
+Route::get('/DirectorDashboard', function () {
+    return view('Director/Director_Dashboard', ['page_title' => 'Director Dashboard']);
+    })->name('Director_Dashboard');
+
+// Route::get('/DirectorProfile', function () {
+//     return view('Director/Director_Profile', ['page_title' => 'Director Profile']);
+//     })->name('Director_Profile');
+
+Route::get('/DirectorReports', function () {
+    return view('Director/Director_Reports', ['page_title' => 'Director Reports']);
+    })->name('Director_Reports');
+
+
+
+
+
+
+
+require __DIR__.'/auth.php';
+//This is like an extend/include function. It includes the auth.php route in this web.php route so that It can access the routes inside the auth.php
+
+
+
+
+/*
+ * June 17, 2023 <Sat> Daniel's modified part
+ */
+
+
+//For dropzone to display and upload req bin
+Route::get('/Faculty_RequirementBin', [DropzoneController::class, 'Faculty_RequirementBin']);
+Route::post('/Faculty_RequirementBin', [DropzoneController::class, 'store'])->name('dropzone.store');
+
+//For dropzone to remove file
+// to follow
 

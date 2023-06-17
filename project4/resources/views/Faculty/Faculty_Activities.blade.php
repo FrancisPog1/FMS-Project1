@@ -83,7 +83,7 @@
                                             Flag Raising Ceremony
                                         </td>
                                         <td>
-                                            <button type="button" class="text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-600 dark:focus:ring-red-800">Cancelled</button>
+                                            <button type="button" class="text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-2 text-center mr-2 mb-2">Cancelled</button>
                                         </td>
                                         <td>September 27, 2022 12:00 AM - November 1, 2022 11:59 PM</td>
                                         <td class="text-center">
@@ -93,9 +93,9 @@
                                                 rounded-lg hover:bg-blue-800
                                                 focus:ring-4 focus:outline-none
                                                 focus:ring-blue-300
-                                                dark:bg-blue-600
-                                                dark:hover:bg-blue-700
-                                                dark:focus:ring-blue-800">View</button>
+                                               
+                                               
+                                               ">View</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -152,7 +152,7 @@
                                             Start time: <b>12pm</b> <br>
                                             End time: <b>3pm</b> <br>
                                             Location: <b>Via Zoom meet</b> <br><br>
-                                            Status: <button type="button" class="text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-600 dark:focus:ring-red-800">Cancelled</button>
+                                            Status: <button type="button" class="text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-2 text-center mr-2 mb-2">Cancelled</button>
                                         </p>
 
                                         <button type="button" class="btn btn-outline-primary">View Memo dw</button>

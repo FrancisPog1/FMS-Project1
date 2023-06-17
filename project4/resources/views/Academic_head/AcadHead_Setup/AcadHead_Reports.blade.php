@@ -228,9 +228,9 @@
                                                             focus:ring-blue-300 font-medium
                                                             rounded-full text-sm px-2
                                                             text-center mr-2 mb-2
-                                                            dark:bg-blue-600
-                                                            dark:hover:bg-blue-600
-                                                            dark:focus:ring-blue-800">Ongoing</button>
+                                                           
+                                                           
+                                                           ">Ongoing</button>
                                                     </td>
                                                     <td>
                                                         <button type="button"
@@ -240,9 +240,9 @@
                                                             focus:ring-blue-300 font-medium
                                                             rounded-full text-sm px-2
                                                             text-center mr-2 mb-2
-                                                            dark:bg-blue-600
-                                                            dark:hover:bg-blue-600
-                                                            dark:focus:ring-red-800">Ongoing</button>
+                                                           
+                                                           
+                                                           ">Ongoing</button>
                                                     </td>
                                                 </tbody>
                                                 <tfoot>
@@ -364,9 +364,9 @@
                                                             focus:ring-blue-300 font-medium
                                                             rounded-full text-sm px-3
                                                             text-center mr-2 mb-2
-                                                            dark:bg-blue-600
-                                                            dark:hover:bg-blue-600
-                                                            dark:focus:ring-red-800">Ongoing</button>
+                                                           
+                                                           
+                                                           ">Ongoing</button>
                                                     </td>
                                                 </tbody>
                                                 <tfoot>
@@ -466,9 +466,9 @@
                                                             focus:ring-blue-300 font-medium
                                                             rounded-full text-sm px-3
                                                             text-center mr-2 mb-2
-                                                            dark:bg-blue-600
-                                                            dark:hover:bg-blue-600
-                                                            dark:focus:ring-red-800">Ongoing</button>
+                                                           
+                                                           
+                                                           ">Ongoing</button>
                                                     </td>
                                                 </tbody>
                                                 <tfoot>
@@ -575,9 +575,9 @@
                                                             focus:ring-blue-300 font-medium
                                                             rounded-full text-sm px-3
                                                             text-center mr-2 mb-2
-                                                            dark:bg-blue-600
-                                                            dark:hover:bg-blue-600
-                                                            dark:focus:ring-red-800">Ongoing</button>
+                                                           
+                                                           
+                                                           ">Ongoing</button>
                                                     </td>
                                                     <td>
 
