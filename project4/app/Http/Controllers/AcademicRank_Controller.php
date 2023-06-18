@@ -23,11 +23,15 @@ class AcademicRank_Controller extends Controller
             'description'=>'max:300'
         ]);
 
+        // Get the ID of the logged in user
+        $userId = Auth::user()->id;
+
         /**Codes to get the contents of the input field and save it to the database */
         $AcadRank = new AcademicRank();
         $AcadRank->id = Str::uuid()->toString();
         $AcadRank->title = $request ->title;
-        $AcadRank->description = $request ->description;  
+        $AcadRank->description = $request ->description;
+        $AcadRank->created_by =  $userId;
         $res = $AcadRank->save();
         if($res){
             return back()->with('success', 'You have created an Academic Rank!'); /**Alert Message */
@@ -56,19 +60,20 @@ class AcademicRank_Controller extends Controller
     //UPDATE RANKS
     public function updateRanks(Request $request, $id)
     {
-
+        // Get the logged in user's ID
         $user_id = Auth::user()->id;
+
         $acadrank = AcademicRank::find($id);
         $acadrank->title = $request->input('title');
         $acadrank->description = $request->input('description');
-            // Assign the user's ID to the user_id foreign key column
-        // $acadrank->updated_by = $user->id;
+
+        // Assign the user's ID to the user_id foreign key column
+        $acadrank->updated_by = $user->id;
         $acadrank->save();
-        
-        echo $user_id;
-        // return back()->with('success', 'Academic rank updated successfully.');
+
+        return back()->with('success', 'Academic rank updated successfully.');
     }
 
 
 }
- 
+

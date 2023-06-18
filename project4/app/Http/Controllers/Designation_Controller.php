@@ -22,11 +22,16 @@ class Designation_Controller extends Controller
             'description'=>'max:300'
         ]);
 
+        // Get the user ID of the logged in user
+        $userId = Auth::user()->id;
+
         /**Codes to get the contents of the input field and save it to the database */
         $designation = new Designation();
         $designation->id = Str::uuid()->toString();
         $designation->title = $request ->title;
-        $designation->description = $request ->description;  
+        $designation->description = $request ->description;
+        $designation->created_by = $userId;
+
         $res = $designation->save();
         if($res){
             return back()->with('success', 'You have created a Designation!'); /**Alert Message */
@@ -56,12 +61,17 @@ class Designation_Controller extends Controller
     //UPDATE DESIGNATION
     public function updateDesignations(Request $request, $id)
     {
+        // Get the user ID of the logged in user
+        $userId = Auth::user()->id;
+
         $role = Designation::find($id);
         $role->title = $request->input('title');
         $role->description = $request->input('description');
+        $role->updated_by = $userId;
+
         $role->save();
 
         return back()->with('success', 'Designation updated successfully.');
     }
 }
- 
+

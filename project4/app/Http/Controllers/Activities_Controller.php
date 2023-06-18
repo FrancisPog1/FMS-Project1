@@ -27,14 +27,17 @@ class Activities_Controller extends Controller
                 'type' => 'required',
                 'status' => 'nullable'
             ]);
-    
+
+            // Get the User ID of the logged in user
+            $userId = Auth::user()->id;
+
             /**Codes to get the contents of the input field and save it to the database */
             $activities = new Activities();
             $activities->id = Str::uuid()->toString();
             $activities->title = $request ->title;
-            $activities->description = $request ->description;  
-            $activities->location = $request ->location;  
-            $activities->activity_type_id = $request ->type;  
+            $activities->description = $request ->description;
+            $activities->location = $request ->location;
+            $activities->activity_type_id = $request ->type;
 
             //This codes converts the date picker format into datetime format
             $start_datetime = trim($request->input('start_datetime'));
@@ -47,8 +50,9 @@ class Activities_Controller extends Controller
             $formatted_endDate = $end_carbonDate->format('Y-m-d H:i:s');
             $activities->end_datetime = $formatted_endDate;
 
+            $activities->status = $request ->status;
+            $activities->created_by = $userId;
 
-            $activities->status = $request ->status;  
             $res = $activities->save();
             if($res){
                 return back()->with('success', 'You have created a Activity!'); /**Alert Message */
@@ -56,10 +60,10 @@ class Activities_Controller extends Controller
             else{
                 return back()->with('fail', 'Something went Wrong');
             }
-    
+
         }
 
 
 
 }
- 
+

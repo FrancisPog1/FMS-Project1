@@ -17,7 +17,7 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class RequirementType_Controller extends Controller
 {
-    
+
     /**Creating Requirement Type */
     public function Create_RequirementType(Request $request){
         $request->validate([
@@ -25,11 +25,16 @@ class RequirementType_Controller extends Controller
             'description'=>'max:300'
         ]);
 
+        // Get the user ID of the logged in user
+        $userId = Auth::user()->id;
+
         /**Codes to get the contents of the input field and save it to the database */
         $reqtype = new RequirementType();
         $reqtype->id = Str::uuid()->toString();
         $reqtype->title = $request ->title;
-        $reqtype->description = $request ->description;  
+        $reqtype->description = $request ->description;
+        $reqtype->created_by = $userId;
+
         $res = $reqtype->save();
         if($res){
             return back()->with('success', 'You have created a Requirement Type'); /**Alert Message */
@@ -58,13 +63,18 @@ class RequirementType_Controller extends Controller
     //UPDATE REQUIREMENT TYPE
     public function updateRequirementtypes(Request $request, $id)
     {
+
+        // Get the user ID of the logged in user
+        $userId = Auth::user()->id;
         $req_type = RequirementType::find($id);
         $req_type->title = $request->input('title');
         $req_type->description = $request->input('description');
+        $req_type->updated_by = $userId;
+
         $req_type->save();
 
         return back()->with('success', 'Requirement Type updated successfully.');
     }
 
 }
- 
+
