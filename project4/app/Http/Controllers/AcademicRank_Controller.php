@@ -68,7 +68,7 @@ class AcademicRank_Controller extends Controller
         $acadrank->description = $request->input('description');
 
         // Assign the user's ID to the user_id foreign key column
-        $acadrank->updated_by = $user->id;
+        $acadrank->updated_by = $user_id;
         $acadrank->save();
 
         return back()->with('success', 'Academic rank updated successfully.');

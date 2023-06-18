@@ -9,7 +9,7 @@ use App\Models\User;
 
 
 use App\Models\ActivityType;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session; /**For the session to work */
 use Hash; /**For hashing the password */

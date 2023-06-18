@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session; /**For the session to work */
 use Hash; /**For hashing the password */
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class Specialization_Controller extends Controller
 {
