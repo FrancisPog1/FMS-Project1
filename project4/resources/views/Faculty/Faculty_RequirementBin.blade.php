@@ -80,10 +80,10 @@
                                         <td>{{ $requirementbin->description }}</td>
                                         <td>{{ $requirementbin->deadline }}</td>
                                         <td>
+
+
                                             <button type="button"
-                                                class="text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300
-                                                    font-medium rounded-full text-sm px-2 text-center mr-2 mb-2">
-                                                {{ $requirementbin->status }}</button>
+                                                class="text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-2 text-center mr-2 mb-2">{{ $requirementbin->status }}</button>
                                         </td>
                                         <td class="text-center">
 
@@ -193,12 +193,12 @@
         // To upload
     </script>
 
-    <script>
+    {{-- <script>
         new Dropzone("#reqs-upload", {
             thumbnailWidth: 200,
             maxFilesize: 1,
-            //addRemoveLinks: true,
+            addRemoveLinks: true,
             acceptedFiles: ".pdf,.xls,.xml,.doc,.docx"
         });
-    </script>
+    </script> --}}
 @endsection

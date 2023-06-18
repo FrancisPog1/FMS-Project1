@@ -136,6 +136,10 @@ Route::middleware('auth')->group(function () {
                         //Retrieving Program Data in the DB
                         Route::get('/RequirementBin', function () {
                             $requirementbins = DB::table('requirement_bins')->get();
+                            //Format the deadline or date into more readable date format
+                            foreach ($requirementbins as $requirementbin) {
+                                $requirementbin->deadline = Carbon::parse($requirementbin->deadline)->format('F d, Y h:i A');
+                            }
                             return view('Academic_head/AcadHead_Setup/AcadHead_RequirementBin', compact('requirementbins'));
                         });
 
@@ -381,5 +385,6 @@ Route::get('/Faculty_RequirementBin', [DropzoneController::class, 'Faculty_Requi
 Route::post('/Faculty_RequirementBin', [DropzoneController::class, 'store'])->name('dropzone.store');
 
 //For dropzone to remove file
-// to follow
+//Route::get('/uploaded_files', [DropzoneController::class, 'delete'])->name('dropzone.delete');
+Route::delete('/deleteFile/{filename}', [DropzoneController::class, 'delete'])->name('deleteFile');
 
