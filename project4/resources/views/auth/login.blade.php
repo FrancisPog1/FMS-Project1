@@ -356,10 +356,10 @@
 
                             </h1>
                         </div>
-                                      <!-- Error Message -->
+                                      <!-- Error Message
                             <span class="text-danger text-center">@error('email') {{$message}} @enderror </span>
-                            <span class="text-danger text-center">@error('Password') {{$message}} @enderror </span>
-
+                            <span class="text-danger text-center">@error('Password') {{$message}} @enderror </span> -->
+                        
                         <div class="card-body">
 
                             <p class="text-muted text-center" style="font-size: .8rem;">
@@ -367,18 +367,30 @@
                                 
                             <form action="{{route('login_user')}}" method="post">
                             @csrf
-                                <input type="email" class="form-control
-                                        mb-2" name="email" placeholder="Email">
-                                <input type="password" class="form-control" name="Password" placeholder="Password">
+                                <input id="email" type="email" class="form-control
+                                        mb-2" name="email" placeholder="Email"  :value="old('email')" required autofocus autocomplete="username">
+                          
 
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required autocomplete="current-password" >
+                               
+
+                                <div class="block mt-4">
+                                    <label for="remember_me" class="inline-flex items-center">
+                                        <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                                        <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                                    </label>
+                                </div>
+                                
                                 <div class="row btn-group mt-lg-4">
                                     <div class="col-9">
-                                        <a id="show-modal" class="btn
-                                                btn-danger d-inline-block m-0">Forgot
-                                            Password</a>
+                                    @if (Route::has('password.request'))
+                                        <a id="show-modal" class="btn btn-danger d-inline-block m-0"
+                                         href="{{ route('password.request') }}">Forgot Password</a>
+                                     @endif
                                     </div>
+
                                     <div class="col-3">
-                                        <button class="btn btn-primary d-inline-block m-0" type="submit">Login</button>
+                                        <button class="btn btn-primary d-inline-block m-0" type="submit" >  Login</button>
                                     </div>
                                 </div>
                             </form>

@@ -32,7 +32,7 @@
                             <div class="card-header">
                                 <h3 class="card-title mt-2">List of Users</h3>
                                 <div class="text-right">
-                                    <button data-toggle="modal" data-target="#modal-xl-create" type="button" class="px-4 py-2 text-sm font-medium text-center text-white bg-green-800 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add New User</button>
+                                    <button data-toggle="modal" data-target="#modal-xl-create" type="button" class="px-4 py-2 text-sm font-medium text-center text-white bg-green-800 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300">Add New User</button>
                                 </div>
                             </div>
 
@@ -77,9 +77,9 @@
                                                     @csrf
                                                     <input name="_method" type="hidden" value="DELETE">
 
-                                                    <button data-toggle="modal" onclick="openViewModal('{{ $user->email }}')" data-target="#modal-xl-view" type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">View</button>
-                                                    <button data-toggle="modal" onclick="openEditModal('{{ $user->email }}', '{{ $user->id }}')" data-target="#modal-xl-edit" type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Edit</button>
-                                                    <button type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 delete-button" title="Delete">Delete</button>
+                                                    <button data-toggle="modal" onclick="openViewModal('{{ $user->email }}')" data-target="#modal-xl-view" type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">View</button>
+                                                    <button data-toggle="modal" onclick="openEditModal('{{ $user->email }}', '{{ $user->id }}')" data-target="#modal-xl-edit" type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300">Edit</button>
+                                                    <button type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 delete-button" title="Delete">Delete</button>
                                                     </form>
                                             </td>
                                             </tr>
@@ -194,23 +194,35 @@
                                         <div class="form-group col-md-12">
                                             <label class="required-input">Email</label>
                                             <input type="email" class="form-control" id="email" name="email" placeholder="example@gmail.com" tabindex="1" required="">
-                                            <span class="text-danger">@error('email') {{$message}} @enderror </span>
+                                            <span class="text-danger">
+                                                @foreach ($errors->get('email') as $message)
+                                                    <p>{{ $message }}</p>
+                                                @endforeach
+                                            </span>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="form-group col-md-12">
                                             <label>Password</label>
-                                            <input type="password" class="form-control" id="Password" name="Password"  tabindex="1">
-                                            <span class="text-danger">@error('Password') {{$message}} @enderror </span>
+                                            <input type="password" class="form-control" id="password" name="password"  tabindex="1">
+                                            <span class="text-danger">
+                                                @foreach ($errors->get('password') as $message)
+                                                    <p>{{ $message }}</p>
+                                                @endforeach
+                                            </span>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="form-group col-md-12">
                                             <label>Confirm Password</label>
-                                            <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" tabindex="1">
-                                            <span class="text-danger">@error('ConfirmPassword') {{$message}} @enderror </span>
+                                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" tabindex="1">
+                                            <span class="text-danger">
+                                                @foreach ($errors->get('password_confirmation') as $message)
+                                                    <p>{{ $message }}</p>
+                                                @endforeach
+                                            </span>
                                         </div>
                                     </div>
 

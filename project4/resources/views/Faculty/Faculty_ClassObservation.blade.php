@@ -82,7 +82,7 @@
                                             April 28, 2023, Tues - 11:30AM-12:00PM
                                         </td>
                                         <td>
-                                            <button type="button" class="text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-600 dark:focus:ring-red-800">Cancelled</button>
+                                            <button type="button" class="text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-2 text-center mr-2 mb-2">Cancelled</button>
                                         </td>
                                         <td></td>
                                         <td class="text-center">
@@ -92,9 +92,9 @@
                                                 rounded-lg hover:bg-blue-800
                                                 focus:ring-4 focus:outline-none
                                                 focus:ring-blue-300
-                                                dark:bg-blue-600
-                                                dark:hover:bg-blue-700
-                                                dark:focus:ring-blue-800">View</button>
+                                               
+                                               
+                                               ">View</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -137,7 +137,7 @@
                                                     <b>Observation Details</b>
                                                 </p> <br><br>
                                                 <p style="margin-left: 20px;">
-                                                    Status: <button type="button" class="text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-2 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-600 dark:focus:ring-red-800">Cancelled</button> <br>
+                                                    Status: <button type="button" class="text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-2 text-center mr-2 mb-2">Cancelled</button> <br>
                                                     Date of Observation: <b>April 28, 2023, 07:00 am - 01:00 pm</b> <br>
                                                     Remarks:
                                                 </p>

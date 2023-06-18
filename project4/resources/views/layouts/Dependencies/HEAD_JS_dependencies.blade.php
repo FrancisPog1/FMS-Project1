@@ -1,6 +1,10 @@
 <!-- CSS Dependencies -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
+{{-- For Dropzone CDN --}}
+<script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+<link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
+
 <!-- jQuery -->
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 
@@ -9,19 +13,19 @@
 
 <!-- Toastr Alert Message -->
 <script>
-$(document).ready(function() {
-    @if(Session::has('success'))
-        toastr.success("{{ Session::get('success') }}");
-    @endif
+    $(document).ready(function() {
+        @if (Session::has('success'))
+            toastr.success("{{ Session::get('success') }}");
+        @endif
 
-    @if(Session::has('warning'))
-        toastr.warning("{{ Session::get('warning') }}");
-    @endif
+        @if (Session::has('warning'))
+            toastr.warning("{{ Session::get('warning') }}");
+        @endif
 
-    @if(Session::has('error'))
-        toastr.error("{{ Session::get('error') }}");
-    @endif
-});
+        @if (Session::has('error'))
+            toastr.error("{{ Session::get('error') }}");
+        @endif
+    });
 </script>
 
 <!-- jQuery UI 1.11.4 -->
@@ -38,6 +42,3 @@ $(document).ready(function() {
 
 <!-- MDB UI Kit (THIS IS THE CAUSE OF THE BUG OF LARGE BUTTONS. MUST BE IN THE HEAD PART OF HTML) -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
-
-
-

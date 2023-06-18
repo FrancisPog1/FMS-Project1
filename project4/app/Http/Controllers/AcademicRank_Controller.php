@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\AcademicRank;
 
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session; /**For the session to work */
 use Hash; /**For hashing the password */
@@ -56,12 +56,17 @@ class AcademicRank_Controller extends Controller
     //UPDATE RANKS
     public function updateRanks(Request $request, $id)
     {
+
+        $user_id = Auth::user()->id;
         $acadrank = AcademicRank::find($id);
         $acadrank->title = $request->input('title');
         $acadrank->description = $request->input('description');
+            // Assign the user's ID to the user_id foreign key column
+        // $acadrank->updated_by = $user->id;
         $acadrank->save();
-
-        return back()->with('success', 'Academic rank updated successfully.');
+        
+        echo $user_id;
+        // return back()->with('success', 'Academic rank updated successfully.');
     }
 
 

@@ -25,7 +25,6 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->longText('agenda')->nullable();
             $table->string('status');
-            $table->string('type');
             $table->dateTime('start_datetime');
             $table->dateTime('end_datetime');
 
