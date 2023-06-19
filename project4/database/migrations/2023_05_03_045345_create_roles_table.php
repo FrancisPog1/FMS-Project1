@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             // Default Properties
-            $table->integer('id')->primary()->default(1);
+            $table->integer('id')->primary()->increments()->default(1);
             $table->timestamps();
             $table->softDeletes();
             $table->foreignUuid('created_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');

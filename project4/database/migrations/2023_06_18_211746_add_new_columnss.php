@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-
         Schema::table('users', function (Blueprint $table) {
             $table->integer('foreign_role_id')->nullable();
             $table->foreign('foreign_role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');   ;
         });
-
 
     }
 
@@ -25,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('roles', function (Blueprint $table) {
-            //
-        });
+        //
     }
 };
