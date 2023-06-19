@@ -11,19 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
-            // Default Properties
-            $table->integer('id')->primary()->default(1);
-            $table->timestamps();
-            $table->softDeletes();
-            $table->foreignUuid('created_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignUuid('updated_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-
-            // Fillables
-            $table->string('title');
-            $table->text('description')->nullable();
-
-        });
 
         Schema::table('users', function (Blueprint $table) {
             $table->integer('foreign_role_id')->nullable();

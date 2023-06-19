@@ -202,7 +202,9 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 
                             $activities = DB::table('activities')
                                 ->join('activity_types', 'activities.activity_type_id', '=', 'activity_types.id')
-                                ->select('activities.title', 'activities.start_datetime', 'activities.status', 'activities.end_datetime', 'activity_types.title as type_title')
+                                ->select('activities.title', 'activities.start_datetime', 'activities.status', 'activities.end_datetime',
+                                'activity_types.title as type_title', 'activities.description', 'activities.location', 'activities.id',
+                                'activity_types.id as type')
                                 ->get();
 
                             // Convert start_datetime and end_datetime to the desired format

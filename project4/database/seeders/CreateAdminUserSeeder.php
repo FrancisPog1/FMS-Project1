@@ -19,17 +19,17 @@ class CreateAdminUserSeeder extends Seeder
             'title' => 'Admin',
         ]);
 
-        $role = Role::create([
-            'title' => 'Staff',
-        ]);
+        // $role = Role::create([
+        //     'title' => 'Staff',
+        // ]);
 
-        $role = Role::create([
-            'title' => 'Faculty',
-        ]);
+        // $role = Role::create([
+        //     'title' => 'Faculty',
+        // ]);
 
-        $role = Role::create([
-            'title' => 'Director',
-        ]);
+        // $role = Role::create([
+        //     'title' => 'Director',
+        // ]);
 
         $user = User::create([
             'id' => Str::uuid()->toString(),
