@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('foreign_role_id')->nullable();
-            $table->foreign('foreign_role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');   ;
+            $table->foreign('foreign_role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignUuid('created_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignUuid('updated_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
         });
 
     }
