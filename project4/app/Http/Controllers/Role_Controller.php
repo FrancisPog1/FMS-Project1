@@ -30,7 +30,6 @@ class Role_Controller extends Controller
 
         /**Codes to get the contents of the input field and save it to the database */
         $role = new Role();
-        $role->id = Str::uuid()->toString();
         $role->title = $request ->title;
         $role->description = $request ->description;
         $role->created_by = $userId;

@@ -19,7 +19,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const AcadHead_HOME = '/AcadHead_Dashboard';
     public const AddUser_PAGE = '/AddUser';
-  
+    public const Staff_HOME = '/StaffDashboard';
+    public const Faculty_HOME = '/FacultyDashboard';
+    public const Director_HOME = '/DirectorDashboard';
+
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */

@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-
-            $table->foreignUuid('foreign_role_id')->nullable()->constrained('roles')->onDelete('cascade')->onUpdate('cascade');
-            //
+            $table->integer('foreign_role_id')->nullable();
+            $table->foreign('foreign_role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');   ;
         });
+
     }
 
     /**
@@ -23,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('tables', function (Blueprint $table) {
-            //
-        });
+        //
     }
 };

@@ -41,6 +41,7 @@ class RegisteredUserController extends Controller
         //These are my code where it saves the email, password, and user ID
         $user = new User();
         $user->id = Str::uuid()->toString();        //The uuid will generate a string. It will act as default value for the ID
+        $user->foreign_role_id = $request->role;    //Foreign for roles
         $user->email = $request ->email;
         $user->password = Hash::make($request ->password);
         $user->created_by = $userId;

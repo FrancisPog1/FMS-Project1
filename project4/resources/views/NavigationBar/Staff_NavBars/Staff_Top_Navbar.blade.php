@@ -57,7 +57,7 @@
                     <a href="director_profile.html" class="block px-4 py-2 text-white">Profile</a>
                 </li>
                 <li>
-                    <a id="show-modal" class="block px-4 py-2 text-white" style="cursor: pointer;">Log out</a>
+                    <a id="show-modal-logout" class="block px-4 py-2 text-white"><button>Log out</button></a>
                 </li>
             </ul>
         </div>

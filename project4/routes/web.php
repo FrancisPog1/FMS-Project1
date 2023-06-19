@@ -36,7 +36,8 @@ use App\Http\Controllers\DropzoneController;
 
 
 //------------------------------------------------------------------ ACADEMIC HEAD --------------------------------------------------------------------//
-Route::middleware('auth')->group(function () {
+// Route::middleware(['auth','isAdmin'])->group(function () {
+Route::middleware(['auth','isAdmin'])->group(function () {
      // Define your protected routes here
      //This protects the page by prohibiting the access of user when they are not logged in
 
@@ -52,8 +53,14 @@ Route::middleware('auth')->group(function () {
 
             //Retrieving Users Data in the DB
             Route::get('/AddUser', function () {
-                $users = DB::table('users')->get();
-                return view('Academic_head/Admin_Setup/AcadHead_AddUser', compact('users'));
+                $roles = DB::table('roles')->get();
+
+                $users = DB::table('users')
+                ->leftJoin('roles', 'roles.id', '=', 'users.foreign_role_id')
+                ->select('roles.title as user_role', 'users.email', 'users.status', 'users.id')
+                ->get();
+
+                return view('Academic_head/Admin_Setup/AcadHead_AddUser', compact('users','roles'));
             });
 
 
@@ -268,6 +275,8 @@ Route::middleware('auth')->group(function () {
 
 
 //------------------------------------------------------------------ FACULTIES --------------------------------------------------------------------//
+Route::middleware(['auth', 'isFaculty'])->group(function () {
+
 Route::get('/FacultyActivities', function () {
     return view('Faculty/Faculty_Activities', ['page_title' => 'Faculty Activities']);
     })->name('faculty_Activities');
@@ -304,11 +313,13 @@ Route::get('/FacultyRequirementBin', function () {
             return view('Faculty/Faculty_RequirementBin', compact('requirementbins'));
         });
 
+});
 
 
 
 
 //------------------------------------------------------------------ STAFF --------------------------------------------------------------------//
+Route::middleware(['auth', 'isStaff'])->group(function () {
 Route::get('/StaffClassObservation', function () {
     return view('Staff/Staff_ClassObservation', ['page_title' => 'Staff Class Observation']);
     })->name('Staff_ClassObservation');
@@ -368,10 +379,11 @@ Route::get('/StaffActivities', function () {
 Route::get('/StaffReports', function () {
     return view('Staff/Staff_Reports', ['page_title' => 'Staff Reports']);
     })->name('Staff_Reports');
-
+});
 
 
 //------------------------------------------------------------------ DIRECTOR --------------------------------------------------------------------//
+Route::middleware(['auth', 'isDirector'])->group(function () {
 Route::get('/DirectorClassObservation', function () {
     return view('Director/Director_ClassObservation', ['page_title' => 'Director Class Observation']);
     })->name('Director_ClassObservation');
@@ -400,7 +412,7 @@ Route::get('/DirectorDashboard', function () {
 Route::get('/DirectorReports', function () {
     return view('Director/Director_Reports', ['page_title' => 'Director Reports']);
     })->name('Director_Reports');
-
+});
 
 
 

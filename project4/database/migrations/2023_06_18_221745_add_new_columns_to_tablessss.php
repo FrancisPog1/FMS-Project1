@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             // Default Properties
-            $table->integer('id')->primary();
+            $table->integer('id')->primary()->default(1);
             $table->timestamps();
             $table->softDeletes();
             $table->foreignUuid('created_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
@@ -24,6 +24,13 @@ return new class extends Migration
             $table->text('description')->nullable();
 
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('foreign_role_id')->nullable();
+            $table->foreign('foreign_role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');   ;
+        });
+
+
     }
 
     /**
@@ -31,6 +38,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::table('roles', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -13,14 +13,16 @@ return new class extends Migration
     {       /**This codes are the responsible in creating a table and columns in the database    */
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->timestamps();            
+            $table->timestamps();
+            $table->foreignUuid('created_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignUuid('updated_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->softDeletes();
 
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            
+
             $table->string('status')->default('Inactive');
         });
     }

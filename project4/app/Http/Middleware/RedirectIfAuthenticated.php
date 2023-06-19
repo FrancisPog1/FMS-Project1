@@ -15,13 +15,35 @@ class RedirectIfAuthenticated
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
+
+// I added this code for the role management
+// Added on 06/19/23 1:55 PM
     public function handle(Request $request, Closure $next, string ...$guards): Response
     {
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::AcadHead_HOME);
+            if (Auth::guard($guard)->check())
+            {
+                //Edited 06/19/23 01:02 PM
+                if (Auth::user()->foreign_role_id == '1') {
+                    return redirect(RouteServiceProvider::AcadHead_HOME);
+                }
+
+                elseif (Auth::user()->foreign_role_id == '2') {
+                    return redirect(RouteServiceProvider::Faculty_HOME);
+
+                }
+
+                elseif (Auth::user()->foreign_role_id == '3') {
+                    return redirect(RouteServiceProvider::Staff_HOME);
+
+                }
+
+                elseif (Auth::user()->foreign_role_id == '4') {
+                    return redirect(RouteServiceProvider::Director_HOME);
+                }
+
             }
         }
 
