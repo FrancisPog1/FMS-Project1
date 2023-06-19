@@ -11,10 +11,11 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session; /**For the session to work */
 use Hash; /**For hashing the password */
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class User_Controller extends Controller
 {
-    
+
 /**Codes for registration */
     public function registerUser(Request $request){
         /**Codes to validate the input fields of the registration page */
@@ -24,11 +25,17 @@ class User_Controller extends Controller
             'ConfirmPassword'=>'required|min:8|max:20|same:Password'
         ]);
 
+
+        // Get the user ID of the logged in user
+        $userId = Auth::user()->id;
+
         /**Codes to get the contents of the input field and save it to the database */
         $user = new User();
         $user->id = Str::uuid()->toString();
         $user->email = $request ->email;
-        $user->Password = Hash::make($request ->Password);  
+        $user->Password = Hash::make($request ->Password);
+        $user->created_by = $userId;
+
         $res = $user->save();
         if($res){
             return back()->with('success', 'You have created an account!'); /**Alert Message */
@@ -57,12 +64,16 @@ class User_Controller extends Controller
     //UPDATE USER
     public function updateUsers(Request $request, $id)
     {
+        // Get the user ID of the logged in user
+        $userId = Auth::user()->id;
+
         $user = User::find($id);
         $user->email = $request->input('email');
+        $user->updated_by = $userId;
         $user->save();
 
         return back()->with('success', 'User updated successfully.');
     }
 
 }
- 
+

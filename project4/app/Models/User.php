@@ -11,6 +11,8 @@ class User extends Model implements Authenticatable
 {
     use HasFactory;
 
+    public $incrementing = false; //This fix the bug with the Auth::user()->id code.
+
     protected $table = 'users';
 
     protected $fillable = [
@@ -18,6 +20,8 @@ class User extends Model implements Authenticatable
         'email',
         'password',
     ];
+
+
 
     protected $hidden = [
         'password',

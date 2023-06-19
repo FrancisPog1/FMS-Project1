@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session; /**For the session to work */
 use Hash; /**For hashing the password */
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class FacultyType_Controller extends Controller
 {
@@ -24,11 +25,16 @@ class FacultyType_Controller extends Controller
             'description'=>'max:300'
         ]);
 
+        // Get the user ID of the logged in user
+        $userId = Auth::user()->id;
+
         /**Codes to get the contents of the input field and save it to the database */
         $faculty_type = new facultyType();
         $faculty_type->id = Str::uuid()->toString();
         $faculty_type->title = $request ->title;
-        $faculty_type->description = $request ->description;  
+        $faculty_type->description = $request ->description;
+        $faculty_type->created_by = $userId;
+
         $res = $faculty_type->save();
         if($res){
             return back()->with('success', 'You have created a Faculty Type!'); /**Alert Message */
@@ -58,9 +64,14 @@ class FacultyType_Controller extends Controller
     //UPDATE Faculty Types
     public function updateFacultytypes(Request $request, $id)
     {
+        // Get the user ID of the logged in user
+        $userId = Auth::user()->id;
+
         $type = facultyType::find($id);
         $type->title = $request->input('title');
         $type->description = $request->input('description');
+        $type->updated_by = $userId;
+
         $type->save();
 
         return back()->with('success', 'Faculty Type updated successfully.');
@@ -68,4 +79,4 @@ class FacultyType_Controller extends Controller
 
 
 }
- 
+

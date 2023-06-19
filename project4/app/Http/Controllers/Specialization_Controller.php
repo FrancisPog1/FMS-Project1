@@ -12,10 +12,11 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session; /**For the session to work */
 use Hash; /**For hashing the password */
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class Specialization_Controller extends Controller
 {
-   
+
     /**Creating Specialization */
     public function Create_Specialization(Request $request){
         $request->validate([
@@ -23,11 +24,16 @@ class Specialization_Controller extends Controller
             'description'=>'max:300'
         ]);
 
+        // Get the user ID of the logged in user
+        $userId = Auth::user()->id;
+
         /**Codes to get the contents of the input field and save it to the database */
         $specialization = new Specialization();
         $specialization->id = Str::uuid()->toString();
         $specialization->title = $request ->title;
-        $specialization->description = $request ->description;  
+        $specialization->description = $request ->description;
+        $specialization->created_by = $userId;
+
         $res = $specialization->save();
         if($res){
             return back()->with('success', 'You have created a Specialization!'); /**Alert Message */
@@ -57,14 +63,18 @@ class Specialization_Controller extends Controller
     //UPDATE SPECIALIZATION
     public function updateSpecializations(Request $request, $id)
     {
+        // Get the user ID of the logged in user
+        $userId = Auth::user()->id;
+
         $specialization = Specialization::find($id);
         $specialization->title = $request->input('title');
         $specialization->description = $request->input('description');
+        $specialization->updated_by = $userId;
+
         $specialization->save();
 
         return back()->with('success', 'Specialization updated successfully.');
     }
 
- 
 }
- 
+

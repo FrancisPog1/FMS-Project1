@@ -9,7 +9,7 @@ use App\Models\User;
 
 
 use App\Models\ActivityType;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session; /**For the session to work */
 use Hash; /**For hashing the password */
@@ -25,12 +25,18 @@ class ActivityType_Controller extends Controller
             'description'=>'max:300'
         ]);
 
+        // Get the user ID of the logged in user
+        $userId = Auth::user()->id;
+
         /**Codes to get the contents of the input field and save it to the database */
         $act_type = new ActivityType();
         $act_type->id = Str::uuid()->toString();
         $act_type->title = $request ->title;
         $act_type->description = $request ->description;
         $act_type->category = $request ->category;
+        $act_type->category = $request ->category;
+        $act_type->created_by = $userId;
+
         $res = $act_type->save();
         if($res){
             return back()->with('success', 'You have created a Activity Type'); /**Alert Message */
@@ -59,6 +65,8 @@ class ActivityType_Controller extends Controller
     //UPDATE ACTIVITY TYPES
     public function updateActivitytypes(Request $request, $id)
     {
+        // Get the user ID of the logged in user
+        $userId = Auth::user()->id;
         $act_type = ActivityType::find($id);
         $act_type->title = $request->input('title');
         $act_type->description = $request->input('description');

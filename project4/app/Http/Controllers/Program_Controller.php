@@ -14,10 +14,10 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session; /**For the session to work */
 use Hash; /**For hashing the password */
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class Program_Controller extends Controller
 {
-    
     /**Creating  Program*/
     public function Create_Program(Request $request){
         $request->validate([
@@ -25,11 +25,16 @@ class Program_Controller extends Controller
             'description'=>'max:300'
         ]);
 
+        // Get the user ID of the logged in user
+        $userId = Auth::user()->id;
+
         /**Codes to get the contents of the input field and save it to the database */
         $program = new Program();
         $program->id = Str::uuid()->toString();
         $program->title = $request ->title;
-        $program->description = $request ->description;  
+        $program->description = $request ->description;
+        $program->created_by = $userId;
+
         $res = $program->save();
         if($res){
             return back()->with('success', 'You have created a Program!'); /**Alert Message */
@@ -59,9 +64,15 @@ class Program_Controller extends Controller
     //UPDATE PROGRAMS
     public function updatePrograms(Request $request, $id)
     {
+        // Get the user ID of the logged in user
+        $userId = Auth::user()->id;
+
         $program = Program::find($id);
         $program->title = $request->input('title');
         $program->description = $request->input('description');
+        $program->title = $request->input('title');
+        $program->updated_by = $userId;
+
         $program->save();
 
         return back()->with('success', 'Program updated successfully.');
@@ -69,4 +80,4 @@ class Program_Controller extends Controller
 
 
 }
- 
+
