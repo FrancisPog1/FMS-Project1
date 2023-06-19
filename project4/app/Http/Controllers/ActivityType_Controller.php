@@ -30,7 +30,7 @@ class ActivityType_Controller extends Controller
         $act_type->id = Str::uuid()->toString();
         $act_type->title = $request ->title;
         $act_type->description = $request ->description;
-        $act_type->category = $request ->category;  
+        $act_type->category = $request ->category;
         $res = $act_type->save();
         if($res){
             return back()->with('success', 'You have created a Activity Type'); /**Alert Message */
@@ -62,11 +62,11 @@ class ActivityType_Controller extends Controller
         $act_type = ActivityType::find($id);
         $act_type->title = $request->input('title');
         $act_type->description = $request->input('description');
-        $act_type->category = $request ->input('category'); 
+        $act_type->category = $request ->input('category');
         $act_type->save();
 
         return back()->with('success', 'Activity Type updated successfully.');
     }
 
 }
- 
+
