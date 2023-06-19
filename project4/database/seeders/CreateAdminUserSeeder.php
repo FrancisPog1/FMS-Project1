@@ -1,13 +1,13 @@
 <?php
-  
+
 namespace Database\Seeders;
-  
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Str;
-  
+
 class CreateAdminUserSeeder extends Seeder
 {
     /**
@@ -15,16 +15,30 @@ class CreateAdminUserSeeder extends Seeder
      */
     public function run(): void
     {
+        $role = Role::create([
+            'title' => 'Admin',
+        ]);
+
+        $role = Role::create([
+            'title' => 'Staff',
+        ]);
+
+        $role = Role::create([
+            'title' => 'Faculty',
+        ]);
+
+        $role = Role::create([
+            'title' => 'Director',
+        ]);
+
         $user = User::create([
             'id' => Str::uuid()->toString(),
             'email' => 'andrew@gmail.com',
-            'password' => bcrypt('ssssssss')
+            'password' => bcrypt('password'),
+            'foreign_role_id' => 1,
         ]);
-        
-        $role = Role::create([
-            'title' => 'Academic Head',
-            'id' => Str::uuid()->toString()
-        ]);
-         
+
+
+
     }
 }
