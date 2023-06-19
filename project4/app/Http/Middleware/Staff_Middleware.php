@@ -33,11 +33,10 @@ class Staff_Middleware
             } else {
                 return back()->with('error', 'Access Denied because you are not a Staff');
             }
-        } else {
+        }
+        else {
             // Add a condition to prevent redirecting when already on the login page
-            if ($request->route()->getName() !== '/') {
-                return redirect()->route('/')->with('fail', 'Please login first');
-            }
+                return redirect()->route('/')->with('error', 'Please login first');
         }
 
         return $next($request);

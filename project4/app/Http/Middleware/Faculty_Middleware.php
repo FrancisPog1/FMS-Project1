@@ -34,11 +34,11 @@ class Faculty_Middleware
 
                 return back()->with('error', 'Access Denied because you are not a Faculty Member');
             }
-        } else {
+        }
+        else {
             // Add a condition to prevent redirecting when already on the login page
-            if ($request->route()->getName() !== '/') {
-                return redirect()->route('/')->with('fail', 'Please login first');
-            }
+
+                return back()->with('error', 'Please login first');
         }
 
         return $next($request);

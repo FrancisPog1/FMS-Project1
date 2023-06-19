@@ -171,18 +171,59 @@
 
                                 <div class="modal-body" style="height: 400px;">
                                     <div class="card-body">
+
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <label class="required-input">User Role</label>
+                                                <select id="role" name="role" class="form-control select2">
+                                                    <option disabled selected>List of User role/s</option>
+                                                    @foreach ($roles as $role)
+                                                        <option value="{{ $role->id }}">{{ $role->title }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
                                         <div class="row">
                                             <div class="form-group col-md-12">
                                                 <label class="required-input">Email</label>
                                                 <input type="email" class="form-control" id="email" name="email"
                                                     placeholder="example@gmail.com" tabindex="1" required="">
                                                 <span class="text-danger">
-                                                    @error('email')
-                                                        {{ $message }}
-                                                    @enderror
+                                                    @foreach ($errors->get('email') as $message)
+                                                        <p>{{ $message }}</p>
+                                                    @endforeach
                                                 </span>
                                             </div>
                                         </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <label>New Password</label>
+                                                <input type="password" class="form-control" id="password"
+                                                    name="password" tabindex="1">
+                                                <span class="text-danger">
+                                                    @foreach ($errors->get('password') as $message)
+                                                        <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <label>Confirm Password</label>
+                                                <input type="password" class="form-control" id="password_confirmation"
+                                                    name="password_confirmation" tabindex="1">
+                                                <span class="text-danger">
+                                                    @foreach ($errors->get('password_confirmation') as $message)
+                                                        <p>{{ $message }}</p>
+                                                    @endforeach
+                                                </span>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="modal-footer justify-content-between">
@@ -295,9 +336,10 @@
     </div>
 
     <script>
-        function openEditModal(email, userId) {
+        function openEditModal(email, userId, role) {
             // Set the values in the form fields
             document.getElementById('editForm').elements['email'].value = email;
+            document.getElementById('editForm').elements['role'].value = role;
             document.getElementById('editForm').action = "{{ route('update_users', '') }}" + userId;
 
             // Open the edit modal

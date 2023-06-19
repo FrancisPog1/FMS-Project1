@@ -53,6 +53,9 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended(RouteServiceProvider::Director_HOME)->with('success', 'Director Login Successfull');
         }
 
+        // else {
+        // return redirect()->intended(RouteServiceProvider::Landing_PAGE)->with('error', 'Please enter valid credentials');
+        // }
     }
 
     /**

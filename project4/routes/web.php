@@ -13,7 +13,7 @@ use App\Http\Controllers\RequirementBin_Controller;
 use App\Http\Controllers\RequirementType_Controller;
 use App\Http\Controllers\ActivityType_Controller;
 use App\Http\Controllers\Activities_Controller;
-use App\Http\Controllers\User_Controller;
+use App\Http\Controllers\User_Controller;   // For update and delete
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 use App\Http\Controllers\Dashboard_Controller;

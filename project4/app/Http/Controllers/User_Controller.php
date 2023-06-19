@@ -11,40 +11,11 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session; /**For the session to work */
 use Hash; /**For hashing the password */
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Auth;
 
 class User_Controller extends Controller
 {
-
-/**Codes for registration */
-    public function registerUser(Request $request){
-        /**Codes to validate the input fields of the registration page */
-        $request->validate([
-            'email'=>'required|email|unique:users',
-            'Password'=>'required|min:8|max:20',
-            'ConfirmPassword'=>'required|min:8|max:20|same:Password'
-        ]);
-
-
-        // Get the user ID of the logged in user
-        $userId = Auth::user()->id;
-
-        /**Codes to get the contents of the input field and save it to the database */
-        $user = new User();
-        $user->id = Str::uuid()->toString();
-        $user->email = $request ->email;
-        $user->Password = Hash::make($request ->Password);
-        $user->created_by = $userId;
-
-        $res = $user->save();
-        if($res){
-            return back()->with('success', 'You have created an account!'); /**Alert Message */
-        }
-        else{
-            return back()->with('fail', 'Something Wrong');
-        }
-    }
-
     public function deleteUsers($id)
     {   // Find the user by its ID
         $user = User::find($id);
@@ -64,11 +35,18 @@ class User_Controller extends Controller
     //UPDATE USER
     public function updateUsers(Request $request, $id)
     {
+            $request->validate([
+            'email'=>'required|email',
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+             ]);
+
         // Get the user ID of the logged in user
         $userId = Auth::user()->id;
 
         $user = User::find($id);
         $user->email = $request->input('email');
+        $user->foreign_role_id = $request->input('role');
+        $user->password = Hash::make($request ->password);
         $user->updated_by = $userId;
         $user->save();
 

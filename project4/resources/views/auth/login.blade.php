@@ -1,4 +1,3 @@
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,10 +23,10 @@
 <body>
 
     <style>
-        body
-        {
+        body {
             overflow: hidden;
         }
+
         .card {
             height: 100vh;
             display: flex;
@@ -54,10 +53,12 @@
                                             <div class="col-md-4">
                                                 <div class="container-fluid">
                                                     <div class="info-box">
-                                                        <span class="info-box-icon
+                                                        <span
+                                                            class="info-box-icon
                                                                 pal-1 pal-1
                                                                 text-col-2
-                                                                elevation-1"><i class="fas
+                                                                elevation-1"><i
+                                                                class="fas
                                                                     fa-user-shield"></i></span>
                                                         <div class="info-box-content">
                                                             <span class="info-box-text">Academic
@@ -73,9 +74,11 @@
                                             <div class="col-md-4">
                                                 <div class="container-fluid">
                                                     <div class="info-box">
-                                                        <span class="info-box-icon
+                                                        <span
+                                                            class="info-box-icon
                                                                 pal-1 text-col-2
-                                                                elevation-1"><i class="fas
+                                                                elevation-1"><i
+                                                                class="fas
                                                                     fa-folder"></i></span>
                                                         <div class="info-box-content">
                                                             <span class="info-box-text">Faculty
@@ -93,10 +96,12 @@
                                             <div class="col-md-4">
                                                 <div class="container-fluid">
                                                     <div class="info-box">
-                                                        <span class="info-box-icon
+                                                        <span
+                                                            class="info-box-icon
                                                                 pal-1 text-col-2
                                                                 pal-1
-                                                                elevation-1"><i class="fas
+                                                                elevation-1"><i
+                                                                class="fas
                                                                     fa-user-graduate"></i></span>
                                                         <div class="info-box-content">
                                                             <span class="info-box-text">University
@@ -112,10 +117,12 @@
                                             <div class="col-md-4">
                                                 <div class="container-fluid">
                                                     <div class="info-box">
-                                                        <span class="info-box-icon
+                                                        <span
+                                                            class="info-box-icon
                                                                 pal-1 text-col-2
                                                                 pal-1
-                                                                elevation-1"><i class="fas
+                                                                elevation-1"><i
+                                                                class="fas
                                                                     fa-user-friends"></i></span>
                                                         <div class="info-box-content">
                                                             <span class="info-box-text">Total
@@ -131,10 +138,12 @@
                                             <div class="col-md-4">
                                                 <div class="container-fluid">
                                                     <div class="info-box">
-                                                        <span class="info-box-icon
+                                                        <span
+                                                            class="info-box-icon
                                                                 pal-1 text-col-2
                                                                 pal-1
-                                                                elevation-1"><i class="fas
+                                                                elevation-1"><i
+                                                                class="fas
                                                                     fa-users-cog"></i></span>
                                                         <div class="info-box-content">
                                                             <span class="info-box-text">Staff
@@ -150,10 +159,12 @@
                                             <div class="col-md-4">
                                                 <div class="container-fluid">
                                                     <div class="info-box">
-                                                        <span class="info-box-icon
+                                                        <span
+                                                            class="info-box-icon
                                                                 pal-1 text-col-2
                                                                 pal-1
-                                                                elevation-1"><i class="fas
+                                                                elevation-1"><i
+                                                                class="fas
                                                                     fa-flag"></i></span>
                                                         <div class="info-box-content">
                                                             <span class="info-box-text">Total
@@ -169,10 +180,12 @@
                                             <div class="col-md-4">
                                                 <div class="container-fluid">
                                                     <div class="info-box">
-                                                        <span class="info-box-icon
+                                                        <span
+                                                            class="info-box-icon
                                                                 pal-1 text-col-2
                                                                 pal-1
-                                                                elevation-1"><i class="fas
+                                                                elevation-1"><i
+                                                                class="fas
                                                                     fa-user-plus"></i></span>
                                                         <div class="info-box-content">
                                                             <span class="info-box-text">Total
@@ -189,10 +202,12 @@
                                             <div class="col-md-4">
                                                 <div class="container-fluid">
                                                     <div class="info-box">
-                                                        <span class="info-box-icon
+                                                        <span
+                                                            class="info-box-icon
                                                                 pal-1 text-col-2
                                                                 pal-1
-                                                                elevation-1"><i class="fas
+                                                                elevation-1"><i
+                                                                class="fas
                                                                     fa-clipboard-list"></i></span>
                                                         <div class="info-box-content">
                                                             <span class="info-box-text">Reports
@@ -218,7 +233,8 @@
                                         </p>
 
                                         <div class="chart">
-                                            <canvas id="salesChart" height="180" style="height:
+                                            <canvas id="salesChart" height="180"
+                                                style="height:
                                                     180px;"></canvas>
                                         </div>
 
@@ -232,10 +248,12 @@
                                         <div class="progress-group">
                                             Overall Progress
                                             <span class="float-right"><b>80</b>/100</span>
-                                            <div class="progress
+                                            <div
+                                                class="progress
                                                     progress-sm">
                                                 <div class="progress-bar
-                                                        bg-primary" style="width: 80%"></div>
+                                                        bg-primary"
+                                                    style="width: 80%"></div>
                                             </div>
                                         </div>
 
@@ -243,10 +261,12 @@
                                         <div class="progress-group">
                                             Submitted Requirement Bin
                                             <span class="float-right"><b>310</b>/400</span>
-                                            <div class="progress
+                                            <div
+                                                class="progress
                                                     progress-sm">
                                                 <div class="progress-bar
-                                                        bg-success" style="width: 75%"></div>
+                                                        bg-success"
+                                                    style="width: 75%"></div>
                                             </div>
                                         </div>
 
@@ -255,10 +275,12 @@
                                             <span class="progress-text">Activity
                                                 Statuses</span>
                                             <span class="float-right"><b>30</b>/50</span>
-                                            <div class="progress
+                                            <div
+                                                class="progress
                                                     progress-sm">
                                                 <div class="progress-bar
-                                                        bg-warning" style="width: 60%"></div>
+                                                        bg-warning"
+                                                    style="width: 60%"></div>
                                             </div>
                                         </div>
 
@@ -266,11 +288,14 @@
                                         <div class="progress-group">
                                             Monthly Reports
                                             <span class="float-right"><b>30</b>/500</span>
-                                            <div class="progress
+                                            <div
+                                                class="progress
                                                     progress-sm">
                                                 <div class="progress-bar
-                                                        bg-danger" style="width:
-                                                        10%"></div>
+                                                        bg-danger"
+                                                    style="width:
+                                                        10%">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -279,11 +304,15 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col-sm-3 col-6">
-                                        <div class="description-block
+                                        <div
+                                            class="description-block
                                                 border-right">
-                                            <span class="description-percentage
-                                                    text-success"><i class="fas
-                                                        fa-caret-up"></i> 80%</span>
+                                            <span
+                                                class="description-percentage
+                                                    text-success"><i
+                                                    class="fas
+                                                        fa-caret-up"></i>
+                                                80%</span>
                                             <h5 class="description-header">Overall</h5>
                                             <span class="description-text">Progress</span>
                                         </div>
@@ -291,11 +320,15 @@
                                     </div>
 
                                     <div class="col-sm-3 col-6">
-                                        <div class="description-block
+                                        <div
+                                            class="description-block
                                                 border-right">
-                                            <span class="description-percentage
-                                                    text-danger"><i class="fas
-                                                        fa-caret-down"></i> 30%</span>
+                                            <span
+                                                class="description-percentage
+                                                    text-danger"><i
+                                                    class="fas
+                                                        fa-caret-down"></i>
+                                                30%</span>
                                             <h5 class="description-header">Per
                                                 term</h5>
                                             <span class="description-text">Reports</span>
@@ -304,11 +337,15 @@
                                     </div>
 
                                     <div class="col-sm-3 col-6">
-                                        <div class="description-block
+                                        <div
+                                            class="description-block
                                                 border-right">
-                                            <span class="description-percentage
-                                                    text-success"><i class="fas
-                                                        fa-caret-up"></i> 20%</span>
+                                            <span
+                                                class="description-percentage
+                                                    text-success"><i
+                                                    class="fas
+                                                        fa-caret-up"></i>
+                                                20%</span>
                                             <h5 class="description-header">Requirement</h5>
                                             <span class="description-text">Requirement</span>
                                         </div>
@@ -317,9 +354,12 @@
 
                                     <div class="col-sm-3 col-6">
                                         <div class="description-block">
-                                            <span class="description-percentage
-                                                    text-warning"><i class="fas
-                                                        fa-caret-down"></i> 38%</span>
+                                            <span
+                                                class="description-percentage
+                                                    text-warning"><i
+                                                    class="fas
+                                                        fa-caret-down"></i>
+                                                38%</span>
                                             <h5 class="description-header">GOAL</h5>
                                             <span class="description-text">COMPLETIONS</span>
                                         </div>
@@ -345,7 +385,8 @@
                             </div>
 
                             <h5 class="text-center">Welcome to</h5>
-                            <h1 class="text-center" style="font-size:
+                            <h1 class="text-center"
+                                style="font-size:
                                     2.5rem; font-display: fl;">
                                 <b>FARMS</b><span style="font-size: 12px;">
                                     v2</span>
@@ -356,46 +397,62 @@
 
                             </h1>
                         </div>
-                                      <!-- Error Message
-                            <span class="text-danger text-center">@error('email') {{$message}} @enderror </span>
-                            <span class="text-danger text-center">@error('Password') {{$message}} @enderror </span> -->
-                        
-                        <div class="card-body">
 
+                        <!--Error Message-->
+                        <span class="text-danger text-center">
+                            @error('email')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                        <span class="text-danger text-center">
+                            @error('password')
+                                {{ $message }}
+                            @enderror
+                        </span>
+
+                        <div class="card-body">
                             <p class="text-muted text-center" style="font-size: .8rem;">
                                 Sign in to start your session</p>
-                                
-                            <form action="{{route('login_user')}}" method="post">
-                            @csrf
-                                <input id="email" type="email" class="form-control
-                                        mb-2" name="email" placeholder="Email"  :value="old('email')" required autofocus autocomplete="username">
-                          
 
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required autocomplete="current-password" >
-                               
+                            <form action="{{ route('login_user') }}" method="post">
+                                @csrf
+                                <input id="email" type="email"
+                                    class="form-control
+                                        mb-2" name="email"
+                                    placeholder="Email" :value="old('email')" required autofocus
+                                    autocomplete="username">
+
+
+                                <input type="password" class="form-control" id="password" name="password"
+                                    placeholder="Password" required autocomplete="current-password">
+
 
                                 <div class="block mt-4">
                                     <label for="remember_me" class="inline-flex items-center">
-                                        <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                                        <input id="remember_me" type="checkbox"
+                                            class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
+                                            name="remember">
                                         <span class="ml-2 text-sm text-gray-600">Remember me</span>
                                     </label>
                                 </div>
-                                
+
                                 <div class="row btn-group mt-lg-4">
                                     <div class="col-9">
-                                    @if (Route::has('password.request'))
-                                        <a id="show-modal" class="btn btn-danger d-inline-block m-0"
-                                         href="{{ route('password.request') }}">Forgot Password</a>
-                                     @endif
+                                        @if (Route::has('password.request'))
+                                            <a id="show-modal" class="btn btn-danger d-inline-block m-0"
+                                                href="{{ route('password.request') }}">Forgot Password</a>
+                                        @endif
                                     </div>
 
                                     <div class="col-3">
-                                        <button class="btn btn-primary d-inline-block m-0" type="submit" >  Login</button>
+                                        <button class="btn btn-primary d-inline-block m-0" type="submit">
+                                            Login</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer text-muted my-3" style="font-size: .6rem; background-color:
+                        <div class="card-footer text-muted my-3"
+                            style="font-size: .6rem; background-color:
                                 white;">
                             <div class="text-center">
                                 PUP QUEZON CITY - FACULTY MONITORING SYSTEM
@@ -408,8 +465,8 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
+    </script>
 
 
     <!-- jQuery -->
@@ -441,4 +498,3 @@
     <script src="{{ asset('js/farms.swal.success.modal.js') }}"></script>
 
 </body>
-
