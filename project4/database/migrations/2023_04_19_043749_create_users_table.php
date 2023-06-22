@@ -21,6 +21,7 @@ return new class extends Migration
             $table->rememberToken();
 
             $table->string('status')->default('Inactive');
+            $table->boolean('is_deleted')->default(false);
         });
     }
 

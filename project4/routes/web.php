@@ -15,6 +15,7 @@ use App\Http\Controllers\ActivityType_Controller;
 use App\Http\Controllers\Activities_Controller;
 use App\Http\Controllers\User_Controller;   // For update and delete
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\RequirementSetup_Controller;
 
 use App\Http\Controllers\Dashboard_Controller;
 
@@ -48,130 +49,79 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 
     /**Add User */
     Route::get('/AddUser', function () {
-        return view('Academic_head/Admin_Setup/AcadHead_AddUser', ['page_title' => 'Add User']);
-        })->name('acadhead_AddUser');
+        $roles = DB::table('roles')->get();
 
-            //Retrieving Users Data in the DB
-            Route::get('/AddUser', function () {
-                $roles = DB::table('roles')->get();
+        $users = DB::table('users')
+        ->leftJoin('roles', 'roles.id', '=', 'users.foreign_role_id')
+        ->select('roles.title as user_role', 'users.email', 'users.status', 'users.id')
+        ->get();
 
-                $users = DB::table('users')
-                ->leftJoin('roles', 'roles.id', '=', 'users.foreign_role_id')
-                ->select('roles.title as user_role', 'users.email', 'users.status', 'users.id')
-                ->get();
-
-                return view('Academic_head/Admin_Setup/AcadHead_AddUser', compact('users','roles'));
-            });
+        return view('Academic_head/Admin_Setup/AcadHead_AddUser', compact('users','roles'));
+    })->name('acadhead_AddUser');
 
 
     /**Academic Rank */
-        Route::get('/AcadHead', function () {
-            return view('Academic_head/Admin_Setup/AcadHead_AcademicRank', ['page_title' => 'Academic Rank']);
-        })->name('acadhead_AcademicRank');
-
-            //Retrieving Academic Rank Data in the DB
-            Route::get('/AcadHead', function () {
-                $acadranks = DB::table('academic_ranks')->get();
-                return view('Academic_head/Admin_Setup/AcadHead_AcademicRank', compact('acadranks'));
-            });
+    Route::get('/AcadHead', function () {
+        $acadranks = DB::table('academic_ranks')->get();
+        return view('Academic_head/Admin_Setup/AcadHead_AcademicRank', compact('acadranks'));
+    })->name('acadhead_AcademicRank');
 
     /**Role */
-        Route::get('/Role', function () {
-            return view('Academic_head/Admin_Setup/AcadHead_Role', ['page_title' => 'User Role']);
-        })->name('acadhead_UserRole');
-
-            //Retrieving Roles Data in the DB
-            Route::get('/Role', function () {
-                $roles = DB::table('roles')->get();
-                return view('Academic_head/Admin_Setup/AcadHead_Role', compact('roles'));
-            });
+    Route::get('/Role', function () {
+        $roles = DB::table('roles')->get();
+        return view('Academic_head/Admin_Setup/AcadHead_Role', compact('roles'));
+    })->name('acadhead_UserRole');
 
 
     /**Faculty Type */
-        Route::get('/FacultyType', function () {
-            return view('Academic_head/Admin_Setup/AcadHead_FacultyType', ['page_title' => 'Faculty Type']);
-        })->name('acadhead_FacultyType');
-
-                    //Retrieving Faculty Type Data in the DB
-                    Route::get('/FacultyType', function () {
-                        $facultytypes = DB::table('faculty_types')->get();
-                        return view('Academic_head/Admin_Setup/AcadHead_FacultyType', compact('facultytypes'));
-                    });
-
+    Route::get('/FacultyType', function () {
+        $facultytypes = DB::table('faculty_types')->get();
+        return view('Academic_head/Admin_Setup/AcadHead_FacultyType', compact('facultytypes'));
+    })->name('acadhead_FacultyType');
 
     /**Designation */
-        Route::get('/Designation', function () {
-            return view('Academic_head/Admin_Setup/AcadHead_Designation', ['page_title' => 'Designation']);
-        })->name('acadhead_Designation');
-
-                    //Retrieving Designation Data in the DB
-                    Route::get('/Designation', function () {
-                        $designations = DB::table('designations')->get();
-                        return view('Academic_head/Admin_Setup/AcadHead_Designation', compact('designations'));
-                    });
+    Route::get('/Designation', function () {
+        $designations = DB::table('designations')->get();
+        return view('Academic_head/Admin_Setup/AcadHead_Designation', compact('designations'));
+    })->name('acadhead_Designation');
 
 
     /**Specialization */
-        Route::get('/Specialization', function () {
-            return view('Academic_head/Admin_Setup/AcadHead_Specialization', ['page_title' => 'Specialization']);
-        })->name('acadhead_Specialization');
-
-                    //Retrieving Specialization Data in the DB
-                    Route::get('/Specialization', function () {
-                        $specializations = DB::table('specializations')->get();
-                        return view('Academic_head/Admin_Setup/AcadHead_Specialization', compact('specializations'));
-                    });
+    Route::get('/Specialization', function () {
+        $specializations = DB::table('specializations')->get();
+        return view('Academic_head/Admin_Setup/AcadHead_Specialization', compact('specializations'));
+    })->name('acadhead_Specialization');
 
 
         /**Program*/
         Route::get('/Program', function () {
-        return view('Academic_head/Admin_Setup/AcadHead_Programs', ['page_title' => 'Program']);
+            $programs = DB::table('programs')->get();
+            return view('Academic_head/Admin_Setup/AcadHead_Programs', compact('programs'));
         })->name('acadhead_Program');
-
-                    //Retrieving Program Data in the DB
-                    Route::get('/Program', function () {
-                        $programs = DB::table('programs')->get();
-                        return view('Academic_head/Admin_Setup/AcadHead_Programs', compact('programs'));
-                    });
 
 
         /**Requirement Bin*/
         Route::get('/RequirementBin', function () {
-            return view('Academic_head/AcadHead_Setup/AcadHead_RequirementBin', ['page_title' => 'Requirement Bin']);
-            })->name('acadhead_RequirementBin');
-
-                        //Retrieving Program Data in the DB
-                        Route::get('/RequirementBin', function () {
-                            $requirementbins = DB::table('requirement_bins')->get();
-                            //Format the deadline or date into more readable date format
-                            foreach ($requirementbins as $requirementbin) {
-                                $requirementbin->deadline = Carbon::parse($requirementbin->deadline)->format('F d, Y h:i A');
-                            }
-                            return view('Academic_head/AcadHead_Setup/AcadHead_RequirementBin', compact('requirementbins'));
-                        });
+            $requirementbins = DB::table('requirement_bins')->get();
+            //Format the deadline or date into more readable date format
+            foreach ($requirementbins as $requirementbin) {
+                $requirementbin->deadline = Carbon::parse($requirementbin->deadline)->format('F d, Y h:i A');
+            }
+            return view('Academic_head/AcadHead_Setup/AcadHead_RequirementBin', compact('requirementbins'));
+        })->name('acadhead_RequirementBin');
 
 
         /**Requirement Type*/
         Route::get('/RequirementType', function () {
-            return view('Academic_head/AcadHead_Setup/AcadHead_RequirementType', ['page_title' => 'Class Observation']);
-            })->name('acadhead_RequirementType');
-
-                        //Retrieving Program Data in the DB
-                        Route::get('/RequirementType', function () {
-                            $requirementtypes = DB::table('requirement_types')->get();
-                            return view('Academic_head/AcadHead_Setup/AcadHead_RequirementType', compact('requirementtypes'));
-                        });
+            $requirementtypes = DB::table('requirement_types')->get();
+            return view('Academic_head/AcadHead_Setup/AcadHead_RequirementType', compact('requirementtypes'));
+        })->name('acadhead_RequirementType');
 
         /**Activity Type*/
         Route::get('/ActivityType', function () {
-            return view('Academic_head/AcadHead_Setup/AcadHead_ActivityType', ['page_title' => 'Class Observation']);
-            })->name('acadhead_ActivityType');
-
-                        //Retrieving Program Data in the DB
-                        Route::get('/ActivityType', function () {
-                            $activitytypes = DB::table('activity_types')->get();
-                            return view('Academic_head/AcadHead_Setup/AcadHead_ActivityType', compact('activitytypes'));
-                        });
+            $activitytypes = DB::table('activity_types')->get();
+            return view('Academic_head/AcadHead_Setup/AcadHead_ActivityType', compact('activitytypes'));
+        })->name('acadhead_ActivityType');
 
         /**Class Schedule*/
         Route::get('/ClassSchedule', function () {
@@ -192,30 +142,26 @@ Route::middleware(['auth','isAdmin'])->group(function () {
 
 
         /**Academic Head Activities*/
+
         Route::get('/AcadHead_Activities', function () {
-            return view('Academic_head/AcadHead_Setup/AcadHead_Activities', ['page_title' => 'Activities']);
-            })->name('acadhead_Activities');
+            $activitytypes = DB::table('activity_types')->get();
 
-                        //Retrieving Activity Types Data in the DB
-                        Route::get('/AcadHead_Activities', function () {
-                            $activitytypes = DB::table('activity_types')->get();
+            $activities = DB::table('activities')
+                ->join('activity_types', 'activities.activity_type_id', '=', 'activity_types.id')
+                ->select('activities.title', 'activities.start_datetime', 'activities.status', 'activities.end_datetime',
+                'activity_types.title as type_title', 'activities.description', 'activities.location', 'activities.id',
+                'activity_types.id as type')
+                ->get();
 
-                            $activities = DB::table('activities')
-                                ->join('activity_types', 'activities.activity_type_id', '=', 'activity_types.id')
-                                ->select('activities.title', 'activities.start_datetime', 'activities.status', 'activities.end_datetime',
-                                'activity_types.title as type_title', 'activities.description', 'activities.location', 'activities.id',
-                                'activity_types.id as type')
-                                ->get();
+            // Convert start_datetime and end_datetime to the desired format
+            foreach ($activities as $activity) {
+                $activity->start_datetime = Carbon::parse($activity->start_datetime)->format('F d, Y h:i A');
+                $activity->end_datetime = Carbon::parse($activity->end_datetime)->format('F d, Y h:i A');
+            }
 
-                            // Convert start_datetime and end_datetime to the desired format
-                            foreach ($activities as $activity) {
-                                $activity->start_datetime = Carbon::parse($activity->start_datetime)->format('F d, Y h:i A');
-                                $activity->end_datetime = Carbon::parse($activity->end_datetime)->format('F d, Y h:i A');
-                            }
+            return view('Academic_head/AcadHead_Setup/AcadHead_Activities', compact('activities', 'activitytypes'));
 
-                            return view('Academic_head/AcadHead_Setup/AcadHead_Activities', compact('activities', 'activitytypes'));
-
-                        });
+        });
 
 
         /**User Profiles*/
@@ -235,6 +181,7 @@ Route::middleware(['auth','isAdmin'])->group(function () {
     Route::post('/Create_RequirementType', [RequirementType_Controller::class, 'Create_RequirementType'])->name('Create_RequirementType');
     Route::post('/Create_ActivityType', [ActivityType_Controller::class, 'Create_ActivityType'])->name('Create_ActivityType');
     Route::post('/Create_Activities', [Activities_Controller::class, 'Create_Activities'])->name('Create_Activities');
+    Route::post('/Setup_RequirementBin/{id}', [RequirementSetup_Controller::class, 'Create_Requirement'])->name('Setup_RequirementBin');
 
     //Delete routes for deleting records
     Route::delete('/delete_roles/{roleId}', [Role_Controller::class, 'deleteRoles'])->name('delete_roles');
@@ -272,6 +219,10 @@ Route::middleware(['auth','isAdmin'])->group(function () {
     Route::post('register_user', [RegisteredUserController::class, 'Create_User'])->name('register_user');
 
 
+
+    //Newly Added Routes
+    //Requirement Bin Setup Page
+    Route::get('/requirementbin_setup_page{id}', [RequirementSetup_Controller::class, 'show'])->name('acadhead_bin_setup');
 });
 
 
@@ -306,14 +257,9 @@ Route::get('/FacultyReports', function () {
 
 //----------- Requirement Bin -----------------//
 Route::get('/FacultyRequirementBin', function () {
-    return view('Faculty/Faculty_RequirementBin', ['page_title' => 'Faculty Requirement Bin']);
-    })->name('faculty_RequirementBin');
-
-        //Retrieving Program Data in the DB
-        Route::get('/FacultyRequirementBin', function () {
-            $requirementbins = DB::table('requirement_bins')->get();
-            return view('Faculty/Faculty_RequirementBin', compact('requirementbins'));
-        });
+    $requirementbins = DB::table('requirement_bins')->get();
+    return view('Faculty/Faculty_RequirementBin', compact('requirementbins'));
+})->name('faculty_RequirementBin');
 
 });
 

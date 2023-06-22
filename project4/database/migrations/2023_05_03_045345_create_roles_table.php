@@ -18,10 +18,12 @@ return new class extends Migration
             $table->softDeletes();
             $table->foreignUuid('created_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignUuid('updated_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('is_deleted')->default(false);
 
             // Fillables
             $table->string('title');
             $table->text('description')->nullable();
+
 
         });
     }

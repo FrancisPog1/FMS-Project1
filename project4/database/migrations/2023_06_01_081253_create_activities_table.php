@@ -16,7 +16,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreignUuid('created_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');   
+            $table->foreignUuid('created_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignUuid('updated_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
 
             $table->string('title');
@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('status');
             $table->dateTime('start_datetime');
             $table->dateTime('end_datetime');
+            $table->boolean('is_deleted')->default(false);
 
             //Addditional column
             $table->boolean('is_required')->nullable();

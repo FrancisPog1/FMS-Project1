@@ -11,19 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('designations', function (Blueprint $table) {
+        Schema::create('semesters', function (Blueprint $table) {
             // Default Properties
             $table->uuid('id')->primary();
             $table->timestamps();
             $table->softDeletes();
             $table->foreignUuid('created_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignUuid('updated_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('is_deleted')->default(false);
 
             // Fillables
             $table->string('title');
             $table->longText('description')->nullable();
-            $table->boolean('is_deleted')->default(false);
         });
+
     }
 
     /**
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('designations');
+        Schema::dropIfExists('semester');
     }
 };

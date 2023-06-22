@@ -69,26 +69,52 @@
                                             <td>{{ $requirementbin->title }}</td>
                                             <td>{{ $requirementbin->description }}</td>
                                             <td>{{ $requirementbin->deadline }}</td>
+
                                             <td><button type="button"
                                                     class="text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-300
-                                                    font-medium rounded-full text-sm px-2 text-center mr-2 mb-2">{{ $requirementbin->status }}</button>
+                                                font-medium rounded-full text-sm px-2 text-center mr-2 mb-2">{{ $requirementbin->status }}</button>
                                             </td>
+
+                                            <td>
+                                                <!-- Example single danger button -->
+                                                <div class="btn-group">
+                                                    <form method="POST"
+                                                        action="{{ route('delete_requirementbins', $requirementbin->id) }}">
+                                                        @csrf
+                                                        <button type="button" class="btn btn-danger "
+                                                            data-toggle="dropdown" aria-expanded="false">
+                                                            <h1>... </h1>
+                                                        </button>
+                                                        <div class="dropdown-menu">
+
+                                                            <a href="{{ route('acadhead_bin_setup', $requirementbin->id) }}"
+                                                                class="btn btn-primary btn-lg active px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                                                                role="button" aria-pressed="true">Setup</a>
+
+                                                            <div class="dropdown-divider"></div>
+                                                            <input name="_method" type="hidden" value="DELETE">
+                                                            <button data-toggle="modal"
+                                                                onclick="openViewModal('{{ $requirementbin->title }}', '{{ $requirementbin->description }}', '{{ $requirementbin->deadline }}', '{{ $requirementbin->status }}') "
+                                                                type="button"
+                                                                class="dropdown-item px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">View</button>
+                                                            <button type="button"
+                                                                onclick="openEditModal('{{ $requirementbin->title }}', '{{ $requirementbin->description }}',  '{{ $requirementbin->id }}', '{{ $requirementbin->deadline }}', '{{ $requirementbin->status }}') "
+                                                                class="dropdown-item px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300">Edit</button>
+                                                            <button type="button"
+                                                                class="dropdown-item px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 delete-button"
+                                                                title="Delete">Delete</button>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+                                            </td>
+
+
+
+
+
                                             <td class="text-center">
-                                                <form method="POST"
-                                                    action="{{ route('delete_requirementbins', $requirementbin->id) }}">
-                                                    @csrf
-                                                    <input name="_method" type="hidden" value="DELETE">
-                                                    <button data-toggle="modal"
-                                                        onclick="openViewModal('{{ $requirementbin->title }}', '{{ $requirementbin->description }}', '{{ $requirementbin->deadline }}', '{{ $requirementbin->status }}') "
-                                                        type="button"
-                                                        class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">View</button>
-                                                    <button type="button"
-                                                        onclick="openEditModal('{{ $requirementbin->title }}', '{{ $requirementbin->description }}',  '{{ $requirementbin->id }}', '{{ $requirementbin->deadline }}', '{{ $requirementbin->status }}') "
-                                                        class="px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300">Edit</button>
-                                                    <button type="button"
-                                                        class="px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 delete-button"
-                                                        title="Delete">Delete</button>
-                                                </form>
+
                                             </td>
                                         </tr>
                                     @endforeach
@@ -136,16 +162,16 @@
                                         <div class="row">
                                             <div class="form-group col-md-12">
                                                 <label>Description</label>
-                                                <textarea type="text" class="form-control" id="description" name="description" tabindex="1" style="height: 100px;"
-                                                    readonly></textarea>
+                                                <textarea type="text" class="form-control" id="description" name="description" tabindex="1"
+                                                    style="height: 100px;" readonly></textarea>
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="form-group col-md-12">
                                                 <label class="required-input">Deadline</label>
-                                                <input type="text" class="form-control" id="deadline" name="deadline"
-                                                    placeholder="Title" tabindex="1" readonly>
+                                                <input type="text" class="form-control" id="deadline"
+                                                    name="deadline" placeholder="Title" tabindex="1" readonly>
                                             </div>
                                         </div>
 
@@ -289,6 +315,7 @@
                                                     value="ONGOING" readonly>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
 
