@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-{{-- CONTENTS --}}  
-@section('content')  
+{{-- CONTENTS --}}
+@section('content')
 
 
     <body class="hold-transition sidebar-mini layout-fixed">
@@ -33,7 +33,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title mt-2">List of class schedule</h3>
-								
+
 								<!-- Search function --->
                                 <div class="text-right">
 									<div class="form-inline float-right">
@@ -66,7 +66,7 @@
                                     </option>
                                 </select>
                             </div>
-                            
+
                             <!-- Tables of roles -->
                             <div class="card-body p-0">
                                 <table class="table table-striped">
@@ -83,36 +83,38 @@
                                             <th class="text-center" style="">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody> 
+                                    <tbody>
                                         <tr>
                                             <td>
 												Rosicar Escober
 											</td>
                                             <td>
-												P											
+												P
 											</td>
                                             <td>
-												COMP-GEED											
+												COMP-GEED
 											</td>
                                             <td>
-												Comp Prog.										
+												Comp Prog.
 											</td>
                                             <td>
-												32										
+												32
 											</td>
                                             <td>
-												BSIT 2-2										
+												BSIT 2-2
 											</td>
                                             <td>
-												ACAD - 202									
+												ACAD - 202
 											</td>
                                             <td>
 												Tues - 11:30AM-12:00PM
 											</td>
-											
-											
+
+
                                             <td class="text-center">
-                                                <button data-toggle="modal" data-target="#modal-xl" type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">View</button>
+                                                <button data-toggle="modal" data-target="#modal-xl" type="button" class="px-2 py-2 text-sm text-center rounded-lg text-blue focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                                    <i class="far fa-eye"></i>  
+                                                </button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -145,13 +147,13 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-			
+
 										<div class="row">
 											<div class="container col-sm-5 pr-3" style="padding: 80px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);">
 												<p style="font-size: 1.2rem;">
 													<b>Subject Details</b>
 												</p>											<br>
-												<p style="margin-left: 20px;">																			
+												<p style="margin-left: 20px;">
 														Assign Code: <b>P</b>						<br>
 														Subject Code: <b>COMP-GEED</b>				<br>
 														Subject Title: <b>Computer Programming</b>	<br>
@@ -164,43 +166,43 @@
 											<div class="container col-sm-5" style="padding: 80px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);">
 												<p style="font-size: 1.2rem;">
 													<b>Room Details</b>
-												</p>											<br>		
-												<p style="margin-left: 20px;">																									
+												</p>											<br>
+												<p style="margin-left: 20px;">
 														Building: <b>ACAD</b>						<br>
 														Floor: <b>1st</b>							<br>
 														Status: <b>Available</b>					<br>
 														Units: <b>32</b>							<br>
 														Room Number: <b>202</b>						<br>
-														Room Type: <b>Lecture</b>	
+														Room Type: <b>Lecture</b>
 												</p>
 											</div>
 										</div>
-										
-										
+
+
 										<div class="row mt-6">
-											<div class="container col-sm-5 pr-3" style="padding: 80px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);">							
+											<div class="container col-sm-5 pr-3" style="padding: 80px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);">
 												<p style="font-size: 1.2rem;">
 													<b>Faculty</b>
 												</p>											<br>
 												<p style="margin-left: 20px;">
-													
+
 														Name: <b>Philip Soberano</b>				<br>
 														Faculty Type: <b>Regular</b>				<br>
 														Academic Rank: <b>Professor</b>	<br>
-														Designation: <b>Research Professor</b>		
+														Designation: <b>Research Professor</b>
 												</p>
 											</div>
-											<div class="container col-sm-5" style="padding: 80px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);">									
+											<div class="container col-sm-5" style="padding: 80px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);">
 												<p style="margin-left: 20px;">
-													
+
 														Role: <b>Faculty</b>							<br>
 														Specialization: <b>Public Administration</b>	<br>
-														Program: <b>HRM, MM, Entrep</b>						
+														Program: <b>HRM, MM, Entrep</b>
 												</p>
 											</div>
 										</div>
-										
-										
+
+
 										<div class="mt-6 d-flex justify-content-center">
 											<div class="card mt-6 col-sm-10">
 												  <div class="card-header">
@@ -212,7 +214,7 @@
 													  </button>
 													</div>
 												  </div>
-												  
+
 												  <div class="card-body p-0" style="display: block !important;">
 													<ul class="products-list product-list-in-card pl-2 pr-2">
 													  <li class="item">
@@ -242,16 +244,16 @@
 															</div>
 														</div>
 													  </li>
-												
+
 												   </div>
 											</div>
 										</div>
                                 </div>
-								
+
                                 <div class="modal-footer justify-content-between">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     <button type="button" class="btn btn-danger text-col-1 swalDefaultSuccessSetObservation">Set Observation</button>
-								</div>				
+								</div>
                             </div>
                         </div>
                     </div>
@@ -284,7 +286,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <!-- Local script for warning modals -->
         <script src="{{ asset('js/farms.swal.warning.modal.js') }}"></script>
-		
+
 		<!-- Script for Date picker -->
 		<script src="{{ asset('js/farms.datepicker.js') }}"></script>
 @endpush

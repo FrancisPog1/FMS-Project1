@@ -86,16 +86,15 @@
                                             </td>
 
                                             <td class="text-sm-center">
-                                                <button data-toggle="modal" data-target="#modal-xl" type="button"
-                                                    class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">View</button>
-
-                                                <button data-toggle="modal" type="button" data-target="#modal-xl-edit"
-                                                    onclick="openEditModal('{{ $activity->title }}', '{{ $activity->type }}', '{{ $activity->description }}'
-                                                    ,'{{ $activity->location }}', '{{ $activity->status }}', '{{ $activity->start_datetime }}', '{{ $activity->end_datetime }}', '{{ $activity->id }}')"
-                                                    class="px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300">Edit</button>
-
-                                                <button id="button1" type=""
-                                                    class="px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300">Delete</button>
+                                                <button data-toggle="modal" data-target="#modal-xl" type="button" class="px-2 py-2 text-sm text-center rounded-lg text-blue focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                                    <i class="far fa-eye"></i>
+                                                </button>
+                                                <button data-toggle="modal" type="button" data-target="#modal-xl-edit" onclick="openEditModal('{{ $activity->title }}', '{{ $activity->type }}', '{{ $activity->description }}','{{ $activity->location }}', '{{ $activity->status }}', '{{ $activity->start_datetime }}', '{{ $activity->end_datetime }}', '{{ $activity->id }}')" class="px-2 py-2 text-sm text-center rounded-lg text-yellow focus:ring-4 focus:outline-none focus:ring-yellow-300">
+                                                    <i class="far fa-edit"></i>
+                                                </button>
+                                                <button id="button1" type="" class="px-2 py-2 text-sm text-center rounded-lg text-red focus:ring-4 focus:outline-none focus:ring-red-300">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     @endforeach

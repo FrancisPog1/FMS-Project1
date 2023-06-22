@@ -13,8 +13,8 @@
 @endsection
 
 
-{{-- CONTENTS --}}  
-@section('content')  
+{{-- CONTENTS --}}
+@section('content')
 
 
         <div class="wrapper">
@@ -32,7 +32,7 @@
                     <div class="container-fluid">
                         <div class="row-col-sm-6 mb-2">
                             <div class="col-md-3 ml-4">
-                                <h1 class="m-0">Observation Dashboard</h1>
+                                <h1 class="m-0">Observations</h1>
                             </div>
                         </div>
                     </div>
@@ -57,22 +57,22 @@
 </div>
 
 								</div>
-								
+
 								<!-- Search function --->
                                 <div class="text-right">
 									<div class="row float-right">
 										<div class="button-group row-col-3">
 										  <button type="button" class="text-col-1 btn btn-block btn-warning btn-s p-drop">Pending</button>
-										</div>  
-										<div class="button-group row-col-3">  
+										</div>
+										<div class="button-group row-col-3">
 										  <button type="button" class="text-col-1 btn btn-block btn-danger btn-s p-drop">Cancelled</button>
-										</div>  
-										<div class="button-group row-col-3">  
+										</div>
+										<div class="button-group row-col-3">
 										  <button type="button" class="text-col-1 btn btn-block btn-info btn-s p-drop">Ongoing</button>
-										</div>  
+										</div>
 										<div class="button-group row-col-3">
 										  <button type="button" class="text-col-1 btn btn-block btn-success btn-s p-drop">Done</button>
-										</div>  
+										</div>
 									</div>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                                     </option>
                                 </select>
                             </div>
-                            
+
                             <!-- Tables of roles -->
                             <div class="card-body p-0">
                                 <table class="table table-striped">
@@ -111,36 +111,36 @@
                                             <th class="text-center" style="">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody> 
+                                    <tbody>
                                         <tr>
                                             <td>
 												Rosicar Escober
 											</td>
                                             <td>
-												Jan 16, 2024										
+												Jan 16, 2024
 											</td>
                                             <td>
-												P										
+												P
 											</td>
                                             <td>
-												Comp Prog.										
+												Comp Prog.
 											</td>
                                             <td>
-												BSIT 2-2									
+												BSIT 2-2
 											</td>
                                             <td>
-												ACAD - 202										
+												ACAD - 202
 											</td>
                                             <td>
-												Tues - 11:30AM-12:00PM									
+												Tues - 11:30AM-12:00PM
 											</td>
                                             <td>
 												<button type="button" class="text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 text-center mr-2 mb-2">Cancelled</button>
 											</td>
-											
-											
                                             <td class="text-center">
-                                                <button data-toggle="modal" data-target="#modal-xl" type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">View</button>
+                                                <button data-toggle="modal" data-target="#modal-xl" type="button" class="px-2 py-2 text-sm text-center rounded-lg text-blue focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                                    <i class="far fa-eye"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -173,10 +173,10 @@
                 </div>
             </footer>
         </div>
-            	
+
         <!-- Local script for warning modals -->
         <script src="{{ asset('js/farms.swal.warning.modal.js') }}"></script>
-		
+
 		<!-- Script for Date picker -->
 		<script src="{{ asset('js/farms.datepicker.js') }}"></script>
 
