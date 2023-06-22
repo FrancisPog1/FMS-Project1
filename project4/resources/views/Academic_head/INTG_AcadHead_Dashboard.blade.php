@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-{{-- CONTENTS --}}  
-@section('content')  
+{{-- CONTENTS --}}
+@section('content')
 
 
 
@@ -28,9 +28,9 @@
                                 <div class="container-fluid">
                                     <div class="info-box">
                                         <span class="info-box-icon  pal-1 pal-1 text-col-2 elevation-1"><i class="fas fa-user-shield"></i></span>
-                        
+
                                         <div class="info-box-content">
-                                        <span class="info-box-text">Academic Heads</span>
+                                        <span class="info-box-text">System users</span>
                                         <span class="info-box-number">
                                             0
                                         </span>
@@ -43,7 +43,7 @@
                                 <div class="container-fluid">
                                     <div class="info-box">
                                         <span class="info-box-icon pal-1 text-col-2 elevation-1"><i class="fas fa-folder"></i></span>
-                        
+
                                         <div class="info-box-content">
                                         <span class="info-box-text">Faculty Bin Percentage</span>
                                         <span class="info-box-number">
@@ -59,7 +59,7 @@
                                 <div class="container-fluid">
                                     <div class="info-box">
                                         <span class="info-box-icon pal-1 text-col-2 pal-1 elevation-1"><i class="fas fa-user-graduate"></i></span>
-                        
+
                                         <div class="info-box-content">
                                         <span class="info-box-text">University Directors</span>
                                         <span class="info-box-number">
@@ -74,7 +74,7 @@
                                 <div class="container-fluid">
                                     <div class="info-box">
                                         <span class="info-box-icon pal-1 text-col-2 pal-1 elevation-1"><i class="fas fa-user-friends"></i></span>
-                        
+
                                         <div class="info-box-content">
                                         <span class="info-box-text">Total Meetings</span>
                                         <span class="info-box-number">
@@ -89,7 +89,7 @@
                                 <div class="container-fluid">
                                     <div class="info-box">
                                         <span class="info-box-icon pal-1 text-col-2 pal-1 elevation-1"><i class="fas fa-users-cog"></i></span>
-                        
+
                                         <div class="info-box-content">
                                         <span class="info-box-text">Staff & Checkers</span>
                                         <span class="info-box-number">
@@ -104,7 +104,7 @@
                                 <div class="container-fluid">
                                     <div class="info-box">
                                         <span class="info-box-icon pal-1 text-col-2 pal-1 elevation-1"><i class="fas fa-flag"></i></span>
-                        
+
                                         <div class="info-box-content">
                                         <span class="info-box-text">Total Activities</span>
                                         <span class="info-box-number">
@@ -119,7 +119,7 @@
                                 <div class="container-fluid">
                                     <div class="info-box">
                                         <span class="info-box-icon pal-1 text-col-2 pal-1 elevation-1"><i class="fas fa-user-plus"></i></span>
-                        
+
                                         <div class="info-box-content">
                                         <span class="info-box-text">Total Faculty Members</span>
                                         <span class="info-box-number">
@@ -134,13 +134,13 @@
                                 <div class="container-fluid">
                                     <div class="info-box">
                                         <span class="info-box-icon pal-1 text-col-2 pal-1 elevation-1"><i class="fas fa-clipboard-list"></i></span>
-                        
+
                                         <div class="info-box-content">
                                         <span class="info-box-text">Reports Status</span>
                                         <span class="info-box-number">
                                             0 <small>%</small>
                                         </span>
-                                        
+
                                         </div>
                                     </div>
                                 </div>
@@ -184,14 +184,14 @@
                     </div>
                     </div>
                 </section>
-                
+
                 <!-- Analytics -->
                 <div class="row m-auto">
                     <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
                         <h5 class="card-title">Monthly Recap Report</h5>
-        
+
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
@@ -216,18 +216,18 @@
                             <p class="text-center">
                                 <strong>Monitoring Status: 1 Jan, 2024 - 30 Nov, 2024</strong>
                             </p>
-        
+
                             <div class="chart">
                                 <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
                             </div>
-    
+
                             </div>
-    
+
                             <div class="col-md-4">
                             <p class="text-center">
                                 <strong>Goal Completion</strong>
                             </p>
-        
+
                             <div class="progress-group">
                                 Overall Progress
                                 <span class="float-right"><b>80</b>/100</span>
@@ -235,8 +235,8 @@
                                 <div class="progress-bar bg-primary" style="width: 80%"></div>
                                 </div>
                             </div>
-    
-        
+
+
                             <div class="progress-group">
                                 Submitted Requirement Bin
                                 <span class="float-right"><b>310</b>/400</span>
@@ -244,8 +244,8 @@
                                 <div class="progress-bar bg-success" style="width: 75%"></div>
                                 </div>
                             </div>
-        
-    
+
+
                             <div class="progress-group">
                                 <span class="progress-text">Activity Statuses</span>
                                 <span class="float-right"><b>30</b>/50</span>
@@ -253,8 +253,8 @@
                                 <div class="progress-bar bg-warning" style="width: 60%"></div>
                                 </div>
                             </div>
-        
-    
+
+
                             <div class="progress-group">
                                 Monthly Reports
                                 <span class="float-right"><b>30</b>/500</span>
@@ -262,9 +262,9 @@
                                 <div class="progress-bar bg-danger" style="width: 10%"></div>
                                 </div>
                             </div>
-    
+
                             </div>
-    
+
                         </div>
 
                         </div>
@@ -276,34 +276,34 @@
                                 <h5 class="description-header">Overall</h5>
                                 <span class="description-text">Progress</span>
                             </div>
-    
+
                             </div>
-    
+
                             <div class="col-sm-3 col-6">
                             <div class="description-block border-right">
                                 <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i> 30%</span>
                                 <h5 class="description-header">Per term</h5>
                                 <span class="description-text">Reports</span>
                             </div>
-    
+
                             </div>
-    
+
                             <div class="col-sm-3 col-6">
                             <div class="description-block border-right">
                                 <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 20%</span>
                                 <h5 class="description-header">Requirement</h5>
                                 <span class="description-text">Requirement</span>
                             </div>
-    
+
                             </div>
-    
+
                             <div class="col-sm-3 col-6">
                             <div class="description-block">
                                 <span class="description-percentage text-warning"><i class="fas fa-caret-down"></i> 38%</span>
                                 <h5 class="description-header">GOAL</h5>
                                 <span class="description-text">COMPLETIONS</span>
                             </div>
-    
+
                             </div>
                         </div>
 
@@ -311,7 +311,7 @@
 
                     </div>
                     </div>
-                </div>   
+                </div>
             </div>
 
             <footer class="main-footer">
@@ -322,5 +322,5 @@
                 </div>
             </footer>
         </div>
-            
+
 @endsection

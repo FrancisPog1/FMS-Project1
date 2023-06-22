@@ -61,7 +61,7 @@
                                     <tr>
                                         <th>Email</th>
                                         <th style="width: 25%;">Role</th>
-                                        <th style="width: 15    %;">Status</th>
+                                        <th style="width: 15%;">Status</th>
                                         <th class="text-center" style="width: 25%;">Actions</th>
                                     </tr>
                                 </thead>
@@ -70,7 +70,8 @@
                                         <tr>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->user_role }}</td>
-                                            <td>Inactive</td>
+                                            <!--This should be a toggle switch with funct.-->
+                                            <td><b>WIP</b></td>
 
                                             <td class="text-center">
                                                 <form method="POST" action="{{ route('delete_users', $user->id) }}">
