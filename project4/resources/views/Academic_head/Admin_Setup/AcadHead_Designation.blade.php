@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-{{-- CONTENTS --}}  
-@section('content')  
+{{-- CONTENTS --}}
+@section('content')
 
 
 
@@ -54,31 +54,38 @@
                                     </option>
                                 </select>
                             </div>
-                            
+
                             <!-- Tables of roles -->
                             <div class="card-body p-0">
                                 <table class="table table-striped">
                                     <thead class="pal-1 text-col-2">
                                         <tr>
-                                            <th>Designations</th>
-                                            <th style="width: 50%;">Description</th>
+                                            <th class="text-center">Designations</th>
+                                            {{-- <th style="width: 50%;">Description</th> --}}
                                             <th class="text-center" style="width: 25%;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($designations as $designation)
                                             <tr>
-                                                <td>{{ $designation->title }}</td>
-                                                <td>{{ $designation->description }}</td>
+                                                <td class="text-center">{{ $designation->title }}</td>
+                                                {{-- <td>{{ $designation->description }}</td> --}}
                                                 <td class="text-center">
-                                                <form method="POST" action="{{ route('delete_designations', $designation->id) }}">
-                                                    @csrf
-                                                    <input name="_method" type="hidden" value="DELETE">
+                                                    <form method="POST" action="{{ route('delete_designations', $designation->id) }}">
+                                                        @csrf
+                                                        <input name="_method" type="hidden" value="DELETE">
+                                                        <button data-toggle="modal" onclick="openViewModal('{{ $designation->title }}', '{{ $designation->description }}')" data-target="#modal-xl-view" type="button" class="px-2 py-2 text-sm text-center rounded-lg text-blue focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                                            <i class="far fa-eye"></i>
+                                                        </button>
+                                                        <button type="button" onclick="openEditModal('{{ $designation->title }}', '{{ $designation->description }}',  '{{ $designation->id }}')" class="px-2 py-2 text-sm text-center rounded-lg text-yellow focus:ring-4 focus:outline-none focus:ring-yellow-300">
+                                                            <i class="far fa-edit"></i>
+                                                        </button>
+                                                        <button type="button" class="px-2 py-2 text-sm text-center rounded-lg text-red focus:ring-4 focus:outline-none focus:ring-red-300 delete-button" title="Delete">
+                                                            <i class="far fa-trash-alt"></i>
+                                                        </button>
 
-                                                    <button data-toggle="modal" onclick="openViewModal('{{ $designation->title }}', '{{ $designation->description }}')" data-target="#modal-xl-view" type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">View</button>
-                                                    <button type="button" onclick="openEditModal('{{ $designation->title }}', '{{ $designation->description }}',  '{{ $designation->id }}')" class="px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300">Edit</button>
-                                                    <button type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 delete-button" title="Delete">Delete</button>
-                                                    </form> </td>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -98,7 +105,7 @@
                         </div>
                     </div>
                 </section>
-        
+
                 <section class="content">
                     <form id="viewForm" action="" method="post">
                     <div class="modal fade" id="modal-xl-view">
@@ -139,7 +146,7 @@
 
                 <section class="content">
                 <form action="{{route('CreateDesignation')}}" method="post">
-                @csrf 
+                @csrf
                     <div class="modal fade" id="modal-xl-create">
                         <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -209,7 +216,7 @@
         $('#modal-xl-edit').modal('hide');
     });
     </script>
-    
+
 <script>
         function openViewModal(title, description) {
             // Set the values in the form fields
@@ -227,5 +234,5 @@
         document.getElementById('View_cancelButton').addEventListener('click', function () {
             $('#modal-xl-view').modal('hide');
         });
-    </script>  
+    </script>
 @endsection

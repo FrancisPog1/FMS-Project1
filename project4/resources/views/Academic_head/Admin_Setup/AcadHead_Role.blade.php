@@ -60,8 +60,8 @@
                                     <thead class="pal-1 text-col-2">
                                         <tr>
                                             <th>Roles</th>
-                                            <th style="width: 50%;">Description</th>
-                                            <th class="text-center" style="width: 25%;">Actions</th>
+                                            <th>Description</th>
+                                            <th class="text-center">Actions</th>
                                         </tr>
                                     </thead>
                                         <tbody>
@@ -73,20 +73,15 @@
                                                     <form method="POST" action="{{ route('delete_roles', $role->id) }}">
                                                     @csrf
                                                     <input name="_method" type="hidden" value="DELETE">
-
-                                                    {{-- <button data-toggle="modal" onclick="openViewModal('{{ $role->title }}', '{{ $role->description }}')" data-target="#modal-xl-view" type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">View</button>
-                                                    <button type="button" onclick="openEditModal('{{ $role->title }}', '{{ $role->description }}',  '{{ $role->id }}')" class="px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300">Edit</button>
-                                                    <button type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 delete-button" title="Delete">Delete</button> --}}
-
-                                                    <button data-toggle="modal" onclick="openViewModal('{{ $role->title }}', '{{ $role->description }}')" data-target="#modal-xl-view" type="button" class="px-2 py-2 text-sm text-center rounded-lg text-blue focus:ring-4 focus:outline-none focus:ring-blue-300">
-                                                        <i class="far fa-eye"></i>
-                                                    </button>
-                                                    <button type="button" onclick="openEditModal('{{ $role->title }}', '{{ $role->description }}',  '{{ $role->id }}')" class="px-2 py-2 text-sm text-center rounded-lg text-yellow focus:ring-4 focus:outline-none focus:ring-yellow-300">
-                                                        <i class="far fa-edit"></i>
-                                                    </button>
-                                                    <button type="button" class="px-2 py-2 text-sm text-center rounded-lg text-red focus:ring-4 focus:outline-none focus:ring-red-300 delete-button" title="Delete">
-                                                        <i class="far fa-trash-alt"></i>
-                                                    </button>
+                                                        <button data-toggle="modal" onclick="openViewModal('{{ $role->title }}', '{{ $role->description }}')" data-target="#modal-xl-view" type="button" class="px-2 py-2 text-sm text-center rounded-lg text-blue focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                                            <i class="far fa-eye"></i>
+                                                        </button>
+                                                        <button type="button" onclick="openEditModal('{{ $role->title }}', '{{ $role->description }}',  '{{ $role->id }}')" class="px-2 py-2 text-sm text-center rounded-lg text-yellow focus:ring-4 focus:outline-none focus:ring-yellow-300">
+                                                            <i class="far fa-edit"></i>
+                                                        </button>
+                                                        <button type="button" class="px-2 py-2 text-sm text-center rounded-lg text-red focus:ring-4 focus:outline-none focus:ring-red-300 delete-button" title="Delete">
+                                                            <i class="far fa-trash-alt"></i>
+                                                        </button>
                                                     </form>
                                                 </td>
                                                 </tr>

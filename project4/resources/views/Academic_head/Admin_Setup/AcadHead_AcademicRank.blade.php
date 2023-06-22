@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-{{-- CONTENTS --}}  
-@section('content')  
+{{-- CONTENTS --}}
+@section('content')
 
 
 
@@ -53,7 +53,7 @@
                                     </option>
                                 </select>
                             </div>
-                            
+
                             <!-- Tables of roles -->
                             <div class="card-body p-0">
                                 <table class="table table-striped">
@@ -74,11 +74,16 @@
                                                 @csrf
                                                 <input name="_method" type="hidden" value="DELETE">
 
-                                                <button data-toggle="modal" onclick="openViewModal('{{ $acadrank->title }}', '{{ $acadrank->description }}')" data-target="#modal-xl-view" type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">View</button>
-                                                <button type="button" onclick="openEditModal('{{ $acadrank->title }}', '{{ $acadrank->description }}',  '{{ $acadrank->id }}')" class="px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300">Edit</button>
-     
-                                                    <button type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 delete-button" title="Delete">Delete</button>
-                                                </form>
+                                                <button data-toggle="modal" onclick="openViewModal('{{ $acadrank->title }}', '{{ $acadrank->description }}')" data-target="#modal-xl-view" type="button" class="px-2 py-2 text-sm text-center rounded-lg text-blue focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                                    <i class="far fa-eye"></i>
+                                                </button>
+                                                <button type="button" onclick="openEditModal('{{ $acadrank->title }}', '{{ $acadrank->description }}',  '{{ $acadrank->id }}')" class="px-2 py-2 text-sm text-center rounded-lg text-yellow focus:ring-4 focus:outline-none focus:ring-yellow-300">
+                                                    <i class="far fa-edit"></i>
+                                                </button>
+                                                <button type="button" class="px-2 py-2 text-sm text-center rounded-lg text-red focus:ring-4 focus:outline-none focus:ring-red-300 delete-button" title="Delete">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </button>
+                                            </form>
                                             </td>
                                             </tr>
                                         @endforeach
@@ -107,12 +112,12 @@
                     </div>
                     </form>
                 </section>
- 
+
                 <section class="content">
                 <form id="editForm" action="" method="post">
                     @method('PUT')
                     @csrf
-                
+
                 <div class="modal fade" id="modal-xl-edit">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -139,10 +144,10 @@
             </form>
 
             </section>
-                
+
                 <section class="content">
                 <form action="{{route('Create_AcademicRank')}}" method="post">
-                @csrf 
+                @csrf
                     <div class="modal fade" id="modal-xl-create">
                         <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -229,5 +234,5 @@
         document.getElementById('View_cancelButton').addEventListener('click', function () {
             $('#modal-xl-view').modal('hide');
         });
-    </script>  
+    </script>
 @endsection

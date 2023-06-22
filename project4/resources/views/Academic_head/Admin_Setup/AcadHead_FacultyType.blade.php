@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-{{-- CONTENTS --}}  
-@section('content')  
+{{-- CONTENTS --}}
+@section('content')
 
 
         <div class="wrapper">
@@ -52,31 +52,39 @@
                                     </option>
                                 </select>
                             </div>
-                            
-                            <!-- Tables of roles -->
+
+                            <!-- Tables of faculty type -->
                             <div class="card-body p-0">
                                 <table class="table table-striped">
                                     <thead class="pal-1 text-col-2">
                                         <tr>
-                                            <th>Roles</th>
-                                            <th style="width: 50%;">Description</th>
+                                            <th class="text-center" style="width: 75%;">Faculty types</th>
                                             <th class="text-center" style="width: 25%;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($facultytypes as $type)
                                             <tr>
-                                                <td>{{ $type->title }}</td>
-                                                <td>{{ $type->description }}</td>
+                                                <td class="text-center">{{ $type->title }}</td>
                                                 <td class="text-center">
-                                                <form method="POST" action="{{ route('delete_facultytypes', $type->id) }}">
-                                                    @csrf
-                                                    <input name="_method" type="hidden" value="DELETE">
+                                                    <form method="POST" action="{{ route('delete_facultytypes', $type->id) }}">
+                                                        @csrf
+                                                        <input name="_method" type="hidden" value="DELETE">
 
-                                                    <button data-toggle="modal" onclick="openViewModal('{{ $type->title }}', '{{ $type->description }}')" data-target="#modal-xl-view" type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">View</button>
-                                                    <button type="button" onclick="openEditModal('{{ $type->title }}', '{{ $type->description }}',  '{{ $type->id }}')" class="px-3 py-2 text-sm font-medium text-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300">Edit</button>
-                                                    <button type="button" class="px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 delete-button" title="Delete">Delete</button>
-                                                    </form></td>
+                                                        <button data-toggle="modal" onclick="openViewModal('{{ $type->title }}', '{{ $type->description }}')" data-target="#modal-xl-view" type="button" class="px-2 py-2 text-sm text-center rounded-lg text-blue focus:ring-4 focus:outline-none focus:ring-blue-300">
+                                                            <i class="far fa-eye"></i>
+                                                        </button>
+
+                                                        <button type="button" onclick="openEditModal('{{ $type->title }}', '{{ $type->description }}',  '{{ $type->id }}')" class="px-2 py-2 text-sm text-center rounded-lg text-yellow focus:ring-4 focus:outline-none focus:ring-yellow-300">
+                                                            <i class="far fa-edit"></i>
+                                                        </button>
+
+                                                        <button type="button" class="px-2 py-2 text-sm text-center rounded-lg text-red focus:ring-4 focus:outline-none focus:ring-red-300 delete-button" title="Delete">
+                                                            <i class="far fa-trash-alt"></i>
+                                                        </button>
+
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -109,7 +117,7 @@
                     <form id="editForm" action="" method="post">
                         @method('PUT')
                         @csrf
-                    
+
                     <div class="modal fade" id="modal-xl-edit">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -137,7 +145,7 @@
                 </section>
                 <section class="content">
                 <form action="{{route('CreateFacultyType')}}" method="post">
-                @csrf 
+                @csrf
                     <div class="modal fade" id="modal-xl-create">
                         <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -225,6 +233,6 @@
         document.getElementById('View_cancelButton').addEventListener('click', function () {
             $('#modal-xl-view').modal('hide');
         });
-    </script>  
+    </script>
 
 @endsection
