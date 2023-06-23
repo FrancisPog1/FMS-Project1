@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-{{-- CONTENTS --}}  
-@section('content')  
+{{-- CONTENTS --}}
+@section('content')
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -87,6 +87,13 @@
                                                             <button class="dropdown-item d1" type="button">Part-time faculty</button>
                                                             <button class="dropdown-item d1" type="button">Regular faculty</button>
                                                         </div>
+                                                    {{-- <select id="" name="" class="form-control select2">
+                                                        <option disabled selected>List of Faculty types</option>
+                                                        @foreach ($faculty_types as $facultytype)
+                                                            <option value="{{ $facultytype->id }}">{{ $facultytype->title }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select> --}}
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="required-input">Academic Rank</label>
@@ -94,7 +101,7 @@
                                                         <div class="dropdown-menu" id="myDropdown">
                                                             <button class="dropdown-item" type="button">Option 1</button>
                                                             <button class="dropdown-item" type="button">Option 2</button>
-                                                            <button class="dropdown-item" type="button">Instructor</button>
+                                                              <button class="dropdown-item" type="button">Instructor</button>
                                                         </div>
                                                 </div>
                                                 <div class="col-md-6">

@@ -118,6 +118,7 @@
                 </div>
             </section>
 
+            {{-- To view user role --}}
             <section class="content">
                 <form id="viewForm" action="" method="post">
                     <div class="modal fade" id="modal-xl-view">
@@ -160,7 +161,7 @@
                 </form>
             </section>
 
-
+            {{-- To edit user role --}}
             <section class="content">
                 <form id="editForm" action="" method="post">
                     @method('PUT')
@@ -183,7 +184,6 @@
                                             <div class="form-group col-md-12">
                                                 <label class="required-input">User Role</label>
                                                 <select id="role" name="role" class="form-control select2">
-                                                    <option disabled selected>List of User role/s</option>
                                                     @foreach ($roles as $role)
                                                         <option value="{{ $role->id }}">{{ $role->title }}
                                                         </option>
@@ -247,7 +247,7 @@
                 </form>
             </section>
 
-
+            {{-- To add user role --}}
             <section class="content">
                 <form action="{{ route('register_user') }}" method="post">
                     @csrf
